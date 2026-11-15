@@ -54,13 +54,16 @@ O arquivo `.env`, o banco de dados operacional e os arquivos locais excluídos n
 
 O endereço local configurado no Windows funciona somente no computador em que foi instalado. Publicar o código no GitHub não disponibiliza o servidor nem o banco de dados na internet.
 
+## Funcionamento local
 
-## Azure Static Web Apps
+O frontend e a API sao servidos pelo mesmo Node.js neste computador. O MySQL e os dados existentes permanecem locais.
 
-A implantacao executa `npm run build:web` e envia apenas `dist/web`. O pacote inclui o portal de acesso, folhas de estilo, imagens, scripts de interface e DOMPurify. Os arquivos do servidor, banco, ambiente e ferramentas administrativas ficam fora da hospedagem estatica.
+- Endereco local configurado no Windows: http://central-locadora-chdsm
+- Endereco direto do servidor: http://127.0.0.1:3000/LOCADORA_PAGINA_INICIAL.HTML
+- Comando manual, dentro da pasta do projeto: `npm start`.
+- Inicializador do Windows: `scripts/iniciar-central-locadora.ps1`.
+- O atalho Central Locadora abre o portal local; o servidor inicia em segundo plano ao entrar no Windows.
 
-A pagina inicial encaminha para `LOCADORA_PAGINA_INICIAL.HTML`. Nao use o painel alternativo como pagina de entrada.
+As chamadas da interface usam a rota `/api` do servidor local. O Google Drive continua sendo acessado pelo backend com as credenciais privadas da instalacao.
 
-Essa publicacao nao executa o servidor Express nem transfere o MySQL local. Para login, cadastros e anexos online, publique o backend e um banco acessivel por ele e integre a rota `/api`. Configure as credenciais no ambiente privado do backend. Nao publique o `.env` nem abra o MySQL local para a internet.
-
-Referencias: https://learn.microsoft.com/azure/static-web-apps/build-configuration e https://learn.microsoft.com/azure/static-web-apps/configuration
+O GitHub armazena somente o codigo revisado. Este repositorio nao possui fluxo de publicacao automatica em hospedagem externa. As variaveis privadas, os backups e os documentos operacionais continuam excluidos do Git.
