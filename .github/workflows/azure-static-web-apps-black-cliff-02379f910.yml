@@ -29,6 +29,21 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check publication
+        run: npm run check:publication
+
+      - name: Build public files
+        run: npm run build:web
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -37,7 +52,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
 
-          app_location: "/"
+          app_location: "dist/web"
           api_location: ""
           output_location: ""
           skip_app_build: true

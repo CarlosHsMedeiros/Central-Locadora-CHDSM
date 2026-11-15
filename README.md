@@ -53,3 +53,14 @@ O arquivo `.env`, o banco de dados operacional e os arquivos locais excluídos n
 - `node scripts/check-publication.js --staged`: conteúdo preparado para o próximo commit.
 
 O endereço local configurado no Windows funciona somente no computador em que foi instalado. Publicar o código no GitHub não disponibiliza o servidor nem o banco de dados na internet.
+
+
+## Azure Static Web Apps
+
+A implantacao executa `npm run build:web` e envia apenas `dist/web`. O pacote inclui o portal de acesso, folhas de estilo, imagens, scripts de interface e DOMPurify. Os arquivos do servidor, banco, ambiente e ferramentas administrativas ficam fora da hospedagem estatica.
+
+A pagina inicial encaminha para `LOCADORA_PAGINA_INICIAL.HTML`. Nao use o painel alternativo como pagina de entrada.
+
+Essa publicacao nao executa o servidor Express nem transfere o MySQL local. Para login, cadastros e anexos online, publique o backend e um banco acessivel por ele e integre a rota `/api`. Configure as credenciais no ambiente privado do backend. Nao publique o `.env` nem abra o MySQL local para a internet.
+
+Referencias: https://learn.microsoft.com/azure/static-web-apps/build-configuration e https://learn.microsoft.com/azure/static-web-apps/configuration

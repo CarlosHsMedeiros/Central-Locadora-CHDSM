@@ -9,6 +9,7 @@
     catch (_) { const error = new Error("Não foi possível conectar ao servidor."); error.code = "NETWORK_ERROR"; throw error; }
     if (response.status === 204) return null;
     const body = await response.json().catch(() => null);
+    if (response.status === 404 && !body) { const error = new Error("O servidor do sistema ainda nao esta disponivel nesta hospedagem. Contate o administrador."); error.code = "API_UNAVAILABLE"; error.status = 404; throw error; }
     if (!response.ok) { const error = new Error(body?.error?.message || "A solicitação não pôde ser concluída."); error.status = response.status; error.code = body?.error?.code; error.details = body?.error?.details; throw error; }
     return body;
   }
