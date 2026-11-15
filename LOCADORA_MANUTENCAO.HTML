@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Manutenção</title>
+
+    <link rel="stylesheet"
+          href="LOCADORA_MANUTENCAO.CSS">
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+    <style media="print">
+        @page { size: A4 portrait; margin: 10mm; }
+
+        html,
+        body {
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body > #modalFicha,
+        body > .cabecalho-impressao-global,
+        body > .rodape-impressao-global {
+            width: calc(100% - 16mm) !important;
+            max-width: calc(100% - 16mm) !important;
+            margin-left: 8mm !important;
+            margin-right: 8mm !important;
+        }
+
+        body > .cabecalho-impressao-global {
+            margin-top: 8mm !important;
+        }
+
+        .cabecalho-impressao-global {
+            margin-bottom: 2.5mm !important;
+            padding-bottom: 2mm !important;
+        }
+
+        .cabecalho-impressao-global h1 { font-size: 13pt !important; }
+        .cabecalho-impressao-global p,
+        .cabecalho-impressao-meta { font-size: 7pt !important; }
+
+        #modalFicha,
+        #modalFicha .modal-conteudo,
+        #modalFicha .ficha {
+            break-inside: avoid-page !important;
+            page-break-inside: avoid !important;
+        }
+
+        #modalFicha .modal-conteudo {
+            border: .3mm solid #b9ced9 !important;
+        }
+        #modalFicha .modal-cabecalho { padding: 3mm 4mm !important; }
+        #modalFicha .modal-cabecalho h2 { margin: 0 0 1mm !important; font-size: 14pt !important; }
+        #modalFicha .modal-cabecalho span { font-size: 8pt !important; }
+        #modalFicha .ficha { padding: 3mm !important; }
+        #modalFicha .ficha-secao { margin: 0 0 2.2mm !important; }
+        #modalFicha .ficha-secao:last-child { margin-bottom: 0 !important; }
+        #modalFicha .ficha-titulo { padding: 2mm 2.5mm !important; font-size: 8.5pt !important; }
+        #modalFicha .dados-grid > div { padding: 2.2mm !important; }
+        #modalFicha .dados-grid span { margin-bottom: .7mm !important; font-size: 6.5pt !important; }
+        #modalFicha .dados-grid strong { font-size: 8pt !important; }
+        #modalFicha .texto-ficha { padding: 2.2mm 2.5mm !important; font-size: 7.5pt !important; line-height: 1.25 !important; }
+
+        .rodape-impressao-global {
+            margin-top: 2.5mm !important;
+            padding-top: 1.5mm !important;
+            font-size: 6.5pt !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="topo">
+
+        <div class="logo">
+
+            <span class="logo-principal">
+                LOCADORA
+            </span>
+
+            <span class="logo-destaque">
+                DIGITAL
+            </span>
+
+            <span class="descricao">
+                Gestão de Veículos
+            </span>
+
+        </div>
+
+        <div class="usuario-area">
+
+            Usuário:
+
+            <strong id="nomeUsuario">
+                Usuário
+            </strong>
+
+            <br>
+
+            <a href="#" data-sec-click="h3">
+                Sair do sistema
+            </a>
+
+        </div>
+
+    </div>
+
+    <nav class="menu">
+
+        <a href="LOCADORA_SISTEMA.HTML">
+            Início
+        </a>
+
+        <a href="LOCADORA_VEICULOS.HTML">
+            Veículos
+        </a>
+
+        <a href="LOCADORA_CLIENTES.HTML">
+            Clientes
+        </a>
+
+        <a href="#">
+            Contratos
+        </a>
+
+        <a href="LOCADORA_MULTAS.HTML">
+            Multas
+        </a>
+
+        <a href="LOCADORA_MANUTENCAO.HTML"
+           class="ativo">
+            Manutenção
+        </a>
+
+        <a href="LOCADORA_FINANCEIRO.HTML">
+            Financeiro
+        </a>
+
+        <a href="LOCADORA_RELATORIOS.HTML">
+            Relatórios
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="estrutura">
+
+    <aside class="lateral">
+
+        <div class="lateral-titulo">
+            Serviços
+        </div>
+
+        <a class="opcao"
+           href="LOCADORA_VEICULOS.HTML">
+            🚗 Veículos
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_CLIENTES.HTML">
+            👤 Clientes
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_RELATORIOS.HTML">
+            📄 Contratos
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_MULTAS.HTML">
+            ⚠️ Multas
+        </a>
+
+        <a class="opcao ativo-lateral"
+           href="LOCADORA_MANUTENCAO.HTML">
+            🔧 Manutenção
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_FINANCEIRO.HTML">
+            💰 Financeiro
+        </a>
+
+        <a class="opcao"
+           href="#">
+            📎 Documentos
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_RELATORIOS.HTML">
+            📊 Relatórios
+        </a>
+
+        <a class="opcao"
+           href="#">
+            ⚙️ Configurações
+        </a>
+
+    </aside>
+
+
+    <section class="conteudo">
+
+        <div class="cabecalho-pagina">
+
+            <div>
+
+                <h1>
+                    Controle de Manutenção
+                </h1>
+
+                <p>
+                    Cadastre, consulte e acompanhe as manutenções
+                    da frota.
+                </p>
+
+            </div>
+
+            <button
+                class="btn-novo"
+                data-sec-click="h4">
+
+                + Nova manutenção
+
+            </button>
+
+        </div>
+
+
+        <div class="resumo">
+
+            <div class="resumo-card">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="totalManutencoes">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="resumo-card azul">
+
+                <span>
+                    Agendadas
+                </span>
+
+                <strong id="totalAgendadas">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="resumo-card laranja">
+
+                <span>
+                    Em andamento
+                </span>
+
+                <strong id="totalAndamento">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="resumo-card verde">
+
+                <span>
+                    Concluídas
+                </span>
+
+                <strong id="totalConcluidas">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="pesquisa">
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar por placa, veículo, oficina ou serviço..."
+                data-sec-keyup="h57"
+            >
+
+            <button data-sec-click="h58">
+                🔍 Pesquisar
+            </button>
+
+        </div>
+
+
+        <!-- FORMULÁRIO -->
+
+        <div class="formulario"
+             id="formulario">
+
+            <div class="formulario-titulo">
+
+                <h2>
+                    Cadastro de manutenção
+                </h2>
+
+                <button data-sec-click="h7">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="campo">
+
+                    <label>
+                        Veículo *
+                    </label>
+
+                    <select id="veiculo">
+                        <option value="">
+                            Selecione o veículo
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Tipo de manutenção *
+                    </label>
+
+                    <select id="tipo">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Preventiva">
+                            Preventiva
+                        </option>
+
+                        <option value="Corretiva">
+                            Corretiva
+                        </option>
+
+                        <option value="Revisão">
+                            Revisão
+                        </option>
+
+                        <option value="Pneus">
+                            Pneus
+                        </option>
+
+                        <option value="Elétrica">
+                            Elétrica
+                        </option>
+
+                        <option value="Funilaria">
+                            Funilaria
+                        </option>
+
+                        <option value="Outro">
+                            Outro
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Oficina
+                    </label>
+
+                    <input
+                        type="text"
+                        id="oficina"
+                        placeholder="Nome da oficina"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Data de entrada *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataEntrada"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Data de saída
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataSaida"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Quilometragem
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quilometragem"
+                        placeholder="Ex.: 85000"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Valor das peças
+                    </label>
+
+                    <input
+                        type="text"
+                        id="valorPecas"
+                        class="campo-moeda"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="R$ 0,00"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Valor da mão de obra
+                    </label>
+
+                    <input
+                        type="text"
+                        id="valorMaoObra"
+                        class="campo-moeda"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="R$ 0,00"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="Agendada">
+                            Agendada
+                        </option>
+
+                        <option value="Em andamento">
+                            Em andamento
+                        </option>
+
+                        <option value="Concluída">
+                            Concluída
+                        </option>
+
+                        <option value="Cancelada">
+                            Cancelada
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Próxima manutenção
+                    </label>
+
+                    <input
+                        type="date"
+                        id="proximaData"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label>
+                        Próxima quilometragem
+                    </label>
+
+                    <input
+                        type="number"
+                        id="proximaKm"
+                        placeholder="Ex.: 95000"
+                    >
+
+                </div>
+
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Peças utilizadas
+                    </label>
+
+                    <textarea
+                        id="pecas"
+                        placeholder="Informe as peças utilizadas..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Descrição do serviço *
+                    </label>
+
+                    <textarea
+                        id="descricao"
+                        placeholder="Descreva o serviço realizado ou a realizar..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="campo campo-completo">
+
+                    <label>
+                        Observações
+                    </label>
+
+                    <textarea
+                        id="observacoes"
+                        placeholder="Informações adicionais..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-acoes">
+
+                <button
+                    class="btn-cancelar"
+                    data-sec-click="h7">
+
+                    Cancelar
+
+                </button>
+
+                <button
+                    class="btn-salvar"
+                    data-sec-click="h59">
+
+                    Salvar manutenção
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABELA -->
+
+        <div class="tabela-container">
+
+            <div class="tabela-topo">
+
+                <h2>
+                    Manutenções cadastradas
+                </h2>
+
+                <span id="contador">
+                    0 manutenção(ões)
+                </span>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Veículo
+                        </th>
+
+                        <th>
+                            Tipo
+                        </th>
+
+                        <th>
+                            Oficina
+                        </th>
+
+                        <th>
+                            Entrada
+                        </th>
+
+                        <th>
+                            Valor
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tabelaManutencoes">
+                </tbody>
+
+            </table>
+
+
+            <div
+                id="mensagemVazia"
+                class="mensagem-vazia">
+
+                Nenhuma manutenção cadastrada.
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    CENTRAL LOCADORA
+
+    <br>
+
+    Sistema de Gestão de Veículos
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal"
+     id="modalFicha">
+
+    <div class="modal-conteudo">
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2>
+                    Ficha da manutenção
+                </h2>
+
+                <span id="fichaSubtitulo">
+                    Manutenção
+                </span>
+
+            </div>
+
+            <button
+                class="modal-fechar"
+                data-sec-click="h10">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <div class="ficha">
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    🔧 Informações da manutenção
+                </div>
+
+                <div class="dados-grid">
+
+                    <div>
+                        <span>Veículo</span>
+                        <strong id="fichaVeiculo">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Tipo</span>
+                        <strong id="fichaTipo">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Oficina</span>
+                        <strong id="fichaOficina">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong id="fichaStatus">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Data de entrada</span>
+                        <strong id="fichaEntrada">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Data de saída</span>
+                        <strong id="fichaSaida">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Quilometragem</span>
+                        <strong id="fichaKm">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Valor total</span>
+                        <strong id="fichaValor">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    🛠️ Serviço
+                </div>
+
+                <div class="texto-ficha"
+                     id="fichaDescricao">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    🔩 Peças utilizadas
+                </div>
+
+                <div class="texto-ficha"
+                     id="fichaPecas">
+                    -
+                </div>
+
+            </div>
+
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    📅 Próxima manutenção
+                </div>
+
+                <div class="dados-grid">
+
+                    <div>
+                        <span>Data</span>
+                        <strong id="fichaProximaData">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Quilometragem</span>
+                        <strong id="fichaProximaKm">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    📝 Observações
+                </div>
+
+                <div class="texto-ficha"
+                     id="fichaObservacoes">
+                    Nenhuma observação registrada.
+                </div>
+
+            </div>
+
+            <div class="ficha-secao" id="driveDocsManutencao"></div>
+
+        </div>
+
+
+        <div class="modal-rodape">
+
+            <button
+                type="button"
+                class="btn-pdf"
+                data-sec-click="h60">
+
+                🖨️ Gerar PDF
+
+            </button>
+
+            <button
+                class="btn-cancelar"
+                data-sec-click="h10">
+
+                Fechar
+
+            </button>
+
+            <button
+                class="btn-salvar"
+                data-sec-click="h33">
+
+                ✏️ Editar manutenção
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/plain" data-banco-src="LOCADORA_MASCARAS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_MANUTENCAO.JS"></script>
+
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+</html>

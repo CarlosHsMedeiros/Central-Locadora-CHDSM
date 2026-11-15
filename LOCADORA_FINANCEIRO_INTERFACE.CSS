@@ -1,0 +1,59 @@
+/* Padrao visual da central de relatorios aplicado ao financeiro. */
+body.financeiro-workspace{font-family:'Segoe UI',Arial,sans-serif;background:#edf4f7;color:#333;font-size:14px;line-height:1.5}
+body.financeiro-workspace [hidden]{display:none!important}
+body.financeiro-workspace button{clip-path:none!important;text-transform:none!important;letter-spacing:normal!important;border-radius:7px!important;font-family:inherit;line-height:1.35;cursor:pointer}
+body.financeiro-workspace button::before{display:none!important}
+body.financeiro-workspace button:focus-visible,body.financeiro-workspace a:focus-visible{outline:3px solid #008fd0;outline-offset:3px}
+body.financeiro-workspace .topo{height:72px;padding:0 28px;border-bottom:1px solid #e4e9ef}
+body.financeiro-workspace .logo-principal,body.financeiro-workspace .logo-destaque{font-size:23px;letter-spacing:-.8px}
+body.financeiro-workspace .descricao{font-size:11px;font-style:normal;font-weight:500;color:#555;border-left:1px solid #dde3e9;padding-left:12px}
+body.financeiro-workspace .usuario-area{font-size:12px;line-height:1.5}
+body.financeiro-workspace .menu{height:auto;min-height:44px;gap:22px;padding:0 28px;flex-wrap:wrap}
+body.financeiro-workspace .menu a{font-size:12px;padding:12px 0;border-bottom:3px solid transparent}
+body.financeiro-workspace .menu a.ativo{background:transparent;border-bottom-color:white}
+body.financeiro-workspace .estrutura{display:grid;grid-template-columns:174px minmax(0,1fr);gap:26px;width:calc(100% - 48px);max-width:1600px;margin:26px auto;align-items:start}
+body.financeiro-workspace .lateral{width:auto;background:transparent;border:0;box-shadow:none;margin:0;padding:4px 0;position:sticky;top:20px}
+body.financeiro-workspace .lateral-titulo{background:transparent;color:#006a96;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 10px}
+body.financeiro-workspace .opcao{display:flex;align-items:center;gap:10px;padding:11px 12px;margin:3px 0;border:0;border-radius:7px;background:transparent;color:#555;font-size:13px;font-weight:500}
+body.financeiro-workspace .opcao.ativo-lateral{background:#dff3fc;color:#006a96;font-weight:650}
+body.financeiro-workspace .conteudo{width:100%;min-width:0;padding:0}
+body.financeiro-workspace .cabecalho-pagina{background:transparent;border:0;box-shadow:none;padding:0;margin:0 0 24px;gap:18px}
+body.financeiro-workspace .cabecalho-pagina h1{font-size:27px;font-weight:650;color:#333;letter-spacing:-.7px}
+body.financeiro-workspace .cabecalho-pagina p{font-size:13px;color:#555}
+body.financeiro-workspace .acoes-cabecalho{display:grid;gap:8px}
+body.financeiro-workspace .acoes-cabecalho button{padding:6px 10px;font-size:12px;min-height:34px}
+body.financeiro-workspace .tabela-faturas,body.financeiro-workspace .historico-faturas,body.financeiro-workspace .formulario-fatura{border:1px solid #e0e6ed;border-radius:10px;background:white;box-shadow:0 2px 5px #22334403}
+body.financeiro-workspace .tabela-faturas .tabela-topo{padding:18px 20px;border-bottom:1px solid #e9eef3;flex-wrap:wrap}
+body.financeiro-workspace .tabela-topo h2{font-size:15px;font-weight:650;color:#333}
+body.financeiro-workspace .tabela-topo p{font-size:12px;color:#666}
+body.financeiro-workspace #filtrosFaturas{padding:18px 20px}
+body.financeiro-workspace .filtro-grupo legend{font-size:13px;color:#333;font-weight:600}
+body.financeiro-workspace .filtros-grade{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+body.financeiro-workspace #filtrosFaturas input,body.financeiro-workspace #filtrosFaturas select{height:40px;min-height:40px;font:12px 'Segoe UI',Arial,sans-serif;border-color:#d6dfe8;border-radius:6px}
+body.financeiro-workspace .filtros-acoes{padding:14px 0;border-top:1px solid #edf0f4}
+body.financeiro-workspace .filtros-totais>div{background:#fafcfe;border:1px solid #e7edf2;border-radius:8px;padding:16px}
+body.financeiro-workspace .tabela-faturas>.tabela-scroll{width:calc(100% - 40px)!important;max-width:calc(100% - 40px)!important;margin:0 20px 20px!important;padding:0}
+body.financeiro-workspace #tabelaFaturas tr:nth-child(even){background:#fbfcfd}
+body.financeiro-workspace #tabelaFaturas tr:hover{background:#eef8fc}
+body.financeiro-workspace .historico-faturas{padding:20px}
+body.financeiro-workspace footer{background:transparent;border-top:1px solid #e3e9ef;color:#7b8995;font-size:11px;padding:16px}
+@media(min-width:1200px){
+ body.financeiro-workspace .tabela-faturas table{display:table;table-layout:fixed;width:100%;min-width:0}
+ body.financeiro-workspace .tabela-faturas thead{display:table-header-group}
+ body.financeiro-workspace .tabela-faturas tbody{display:table-row-group}
+ body.financeiro-workspace #tabelaFaturas tr{display:table-row;border:0;padding:0;margin:0}
+ body.financeiro-workspace .tabela-faturas th{background:#dff3fc;color:#006a96;font:650 11px/1.5 'Segoe UI',Arial,sans-serif!important;padding:12px 10px!important;white-space:normal}
+ body.financeiro-workspace #tabelaFaturas td,body.financeiro-workspace #tabelaFaturas td:last-child{display:table-cell!important;padding:13px 10px!important;border-bottom:1px solid #edf1f5;vertical-align:top;font:12px/1.5 'Segoe UI',Arial,sans-serif!important;overflow-wrap:break-word}
+ body.financeiro-workspace #tabelaFaturas td::before{display:none}
+ body.financeiro-workspace .tabela-faturas th:nth-child(1){width:24%}
+ body.financeiro-workspace .tabela-faturas th:nth-child(2){width:23%}
+ body.financeiro-workspace .tabela-faturas th:nth-child(3){width:13%}
+ body.financeiro-workspace .tabela-faturas th:nth-child(4){width:12%}
+ body.financeiro-workspace .tabela-faturas th:nth-child(5){width:15%;text-align:right}
+ body.financeiro-workspace .tabela-faturas th:nth-child(6){width:13%}
+ body.financeiro-workspace #tabelaFaturas .fatura-valor{text-align:right}
+ body.financeiro-workspace #tabelaFaturas td:last-child .btn-acao{display:block;width:100%;min-width:0;padding:7px 5px!important;margin:0 0 6px}
+}
+@media(max-width:1199px){body.financeiro-workspace .estrutura{grid-template-columns:145px minmax(0,1fr);gap:18px;width:calc(100% - 32px)}body.financeiro-workspace .descricao{display:none}body.financeiro-workspace .filtros-grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){body.financeiro-workspace .estrutura{display:block;width:calc(100% - 24px);margin:18px auto}body.financeiro-workspace .lateral{display:none}body.financeiro-workspace .topo{padding:0 16px;height:68px;flex-direction:row;gap:10px}body.financeiro-workspace .usuario-area{font-size:10px;text-align:right}body.financeiro-workspace .menu{padding:0 16px;gap:16px}body.financeiro-workspace .cabecalho-pagina h1{font-size:22px}}
+@media(max-width:480px){body.financeiro-workspace .filtros-grade{grid-template-columns:1fr}body.financeiro-workspace .cabecalho-pagina{flex-direction:column;align-items:stretch}body.financeiro-workspace .logo-principal,body.financeiro-workspace .logo-destaque{font-size:18px}}

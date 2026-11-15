@@ -1,0 +1,67 @@
+# Dependencias e artefatos de desenvolvimento
+node_modules/
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+*.tsbuildinfo
+
+# Ambiente e configuracoes pessoais
+.env
+.env.*
+!.env.example
+*.env
+.envrc
+.npmrc
+.pypirc
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Credenciais, chaves e certificados
+*.pem
+*.key
+*.pfx
+*.p12
+*.jks
+*.keystore
+credentials*.json
+client_secret*.json
+client-secret*.json
+service-account*.json
+service_account*.json
+.aws/
+.ssh/
+secrets/
+private/
+certificates/
+
+# Dados operacionais, copias e arquivos gerados
+.integration-backup/
+backup/
+backups/
+dumps/
+exports/
+uploads/
+logs/
+*.log
+*.bak
+*.backup
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.7z
+*.rar
+dump*.sql
+backup*.sql
+
+# Utilitarios locais com dados fiscais da instalacao
+scripts/register-nfse-example.js
+scripts/register-nfse-xml.js
+
+# Imagens e documentos de previsualizacao
+scripts/*.png
+scripts/*.pdf

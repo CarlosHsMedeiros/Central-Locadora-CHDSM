@@ -1,0 +1,781 @@
+/* =====================================================
+   CONFIGURAÇÕES GERAIS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+}
+
+
+/* =====================================================
+   CABEÇALHO
+===================================================== */
+
+header {
+    background: white;
+}
+
+.topo {
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-principal,
+.logo-destaque {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.logo-principal {
+    color: #111;
+}
+
+.logo-destaque {
+    color: #008fd0;
+}
+
+.descricao {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 12px;
+}
+
+.usuario-area {
+    text-align: right;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.usuario-area a {
+    color: #0077b5;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.usuario-area a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+.menu {
+    height: 66px;
+    background: #008fd0;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+    gap: 35px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   ESTRUTURA
+===================================================== */
+
+.estrutura {
+    width: 84%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 30px;
+}
+
+
+/* =====================================================
+   MENU LATERAL
+===================================================== */
+
+.lateral {
+    background: white;
+    height: fit-content;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 7px rgba(0,0,0,.15);
+}
+
+.lateral-titulo {
+    background: #008fd0;
+    color: white;
+    font-weight: bold;
+    padding: 16px;
+}
+
+.opcao {
+    display: block;
+    padding: 14px 16px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.opcao:hover {
+    background: #eef8fc;
+}
+
+.opcao.ativo-lateral {
+    background: #eef8fc;
+    color: #008fd0;
+    font-weight: bold;
+    border-left: 4px solid #008fd0;
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+.conteudo {
+    min-width: 0;
+}
+
+.cabecalho-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.cabecalho-pagina h1 {
+    color: #333;
+    margin-bottom: 7px;
+}
+
+.cabecalho-pagina p {
+    color: #555;
+}
+
+.btn-novo {
+    background: #008fd0;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-novo:hover {
+    background: #0075ac;
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+.cards-dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card-dashboard {
+    background: white;
+    padding: 20px;
+    min-height: 105px;
+    box-shadow: 0 2px 7px rgba(0,0,0,.10);
+    border-left: 4px solid #008fd0;
+}
+
+.titulo-card {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.card-dashboard strong {
+    color: #00558b;
+    font-size: 25px;
+}
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
+
+.pesquisa {
+    background: white;
+    padding: 18px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 7px rgba(0,0,0,.08);
+}
+
+.pesquisa input {
+    flex: 1;
+    height: 42px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.pesquisa button {
+    border: none;
+    background: #00558b;
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.pesquisa button:hover {
+    background: #003f68;
+}
+
+
+/* =====================================================
+   FORMULÁRIO
+===================================================== */
+
+.formulario {
+    display: none;
+    background: white;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+
+.formulario.mostrar {
+    display: block;
+}
+
+.formulario-titulo {
+    background: #008fd0;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formulario-titulo h2 {
+    font-size: 19px;
+}
+
+.formulario-titulo button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.form-grid {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-grande {
+    grid-column: span 2;
+}
+
+.campo-destaque input {
+    border-color: #008fd0;
+    background: #f5fbfe;
+}
+
+.campo label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.campo input,
+.campo select {
+    height: 42px;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #008fd0;
+    box-shadow: 0 0 0 2px rgba(0,143,208,.10);
+}
+
+.campo small {
+    margin-top: 5px;
+    color: #777;
+}
+
+.form-acoes {
+    border-top: 1px solid #eee;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancelar,
+.btn-salvar {
+    padding: 11px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.btn-cancelar {
+    background: #eee;
+    color: #444;
+}
+
+.btn-cancelar:hover {
+    background: #ddd;
+}
+
+.btn-salvar {
+    background: #008fd0;
+    color: white;
+}
+
+.btn-salvar:hover {
+    background: #0075ac;
+}
+
+.arquivo-atual {
+    margin: 0 25px 15px;
+    padding: 10px;
+    background: #eef8fc;
+    color: #00558b;
+    border-left: 3px solid #008fd0;
+}
+
+
+/* =====================================================
+   TABELA
+===================================================== */
+
+.tabela-container {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+
+.tabela-topo {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+}
+
+.tabela-topo h2 {
+    color: #00558b;
+    font-size: 19px;
+}
+
+.tabela-topo span {
+    color: #666;
+    font-size: 14px;
+}
+
+.tabela-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+thead {
+    background: #f1f7fa;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+th {
+    color: #00558b;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+tbody tr:hover {
+    background: #fafafa;
+}
+
+.mensagem-vazia {
+    padding: 35px;
+    text-align: center;
+    color: #777;
+}
+
+.situacao {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.situacao-pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.situacao-pago {
+    background: #d4edda;
+    color: #155724;
+}
+
+.situacao-recurso {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.situacao-indicacao {
+    background: #e2d9f3;
+    color: #4a2675;
+}
+
+.situacao-cancelada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.btn-ficha,
+.btn-editar,
+.btn-excluir {
+    border: none;
+    padding: 7px 9px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 3px;
+    margin-right: 3px;
+}
+
+.btn-ficha {
+    background: #e7f5fb;
+    color: #006b9d;
+}
+
+.btn-editar {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.btn-excluir {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 1000;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.modal.mostrar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-conteudo {
+    width: min(900px, 100%);
+    background: white;
+    margin: 20px auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,.30);
+}
+
+.modal-cabecalho {
+    background: #008fd0;
+    color: white;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-cabecalho h2 {
+    margin-bottom: 4px;
+}
+
+.modal-cabecalho span {
+    font-size: 13px;
+    opacity: .9;
+}
+
+.modal-fechar {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.ficha {
+    padding: 25px;
+}
+
+.ficha-secao {
+    margin-bottom: 25px;
+}
+
+.ficha-titulo {
+    color: #00558b;
+    font-weight: bold;
+    font-size: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e8f4f8;
+}
+
+.dados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.dados-grid > div {
+    background: #f8fafb;
+    padding: 13px;
+    border: 1px solid #e6e6e6;
+}
+
+.dados-grid span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.dados-grid strong {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.observacoes-ficha {
+    background: #f8fafb;
+    border: 1px solid #e6e6e6;
+    padding: 15px;
+    min-height: 70px;
+    white-space: pre-wrap;
+}
+
+.modal-rodape {
+    border-top: 1px solid #eee;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#fichaArquivo a {
+    color: #0077b5;
+    text-decoration: none;
+}
+
+#fichaArquivo a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
+
+footer {
+    margin-top: 50px;
+    background: #064c70;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .cards-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .estrutura {
+        width: 94%;
+        grid-template-columns: 1fr;
+    }
+
+    .lateral {
+        order: 2;
+    }
+
+    .conteudo {
+        order: 1;
+    }
+
+    .menu {
+        padding-left: 20px;
+        gap: 18px;
+        overflow-x: auto;
+    }
+
+    .topo {
+        padding: 20px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .usuario-area {
+        text-align: left;
+    }
+
+    .logo {
+        flex-wrap: wrap;
+    }
+
+    .descricao {
+        display: none;
+    }
+
+    .logo-principal,
+    .logo-destaque {
+        font-size: 27px;
+    }
+
+    .cabecalho-pagina {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .cards-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-grande {
+        grid-column: span 1;
+    }
+
+    .pesquisa {
+        flex-direction: column;
+    }
+
+    .pesquisa button {
+        height: 42px;
+    }
+
+    .dados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+}
+/* Botões com acabamento inclinado padronizado */
+button:not(.modal-fechar) { position: relative; isolation: isolate; overflow: hidden; background: #008fd0 !important; color: #fff !important; border: 1px solid #008fd0 !important; text-transform: uppercase; transition: all .35s ease; clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); }
+button:not(.modal-fechar)::before { content: ""; position: absolute; inset: 0; left: -110%; background: #fff; opacity: 0; z-index: -1; transition: all .35s ease; }
+button:not(.modal-fechar):hover { background: #fff !important; color: #008fd0 !important; }
+button:not(.modal-fechar):hover::before { left: 0; opacity: 1; }
+
+/* Tabela responsiva sem rolagem lateral */
+.tabela-scroll { overflow-x: hidden; }
+.tabela-scroll table { min-width: 0; table-layout: fixed; }
+@media (max-width: 1400px) {
+    .tabela-scroll th:nth-child(3), .tabela-scroll td:nth-child(3) { display: none; }
+    .tabela-scroll th, .tabela-scroll td { padding: 10px 7px; font-size: 12px; overflow-wrap: anywhere; }
+    .tabela-scroll td:last-child { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+    .tabela-scroll td:last-child button { width: 100%; margin: 0; padding: 6px 4px; font-size: 9px; }
+}
+
+.tabela-scroll td:last-child button { clip-path: none; min-height: 30px; white-space: nowrap; }

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Locadora — Documentos</title>
+  <style>
+    :root{--azul:#008fd0;--azul-escuro:#00558b;--texto:#1f3540;--borda:#d7e4ea}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;color:var(--texto);font-family:"Segoe UI",Arial,sans-serif}.topo{background:#fff;border-top:5px solid var(--azul);box-shadow:0 1px 6px #1233;}.topo-conteudo{max-width:1140px;margin:auto;padding:23px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}.marca{font-size:25px;font-weight:800;color:#00558b}.marca span{color:#008fd0}.voltar{color:#006ca7;font-weight:700;text-decoration:none}.principal{max-width:1140px;margin:34px auto;padding:0 24px}.cabecalho{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}.cabecalho h1{margin:0;color:#00558b;font-size:28px}.cabecalho p{margin:6px 0 0;color:#61747d}.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.cartao{background:#fff;border:1px solid var(--borda);border-radius:12px;padding:22px;box-shadow:0 8px 20px #0f45610d}.icone{font-size:28px}.cartao h2{margin:13px 0 8px;color:#00558b;font-size:18px}.cartao p{color:#61747d;line-height:1.5;min-height:48px}.botao{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;background:var(--azul);color:#fff;text-decoration:none;font-size:13px;font-weight:700;text-transform:uppercase;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}.botao:hover{background:var(--azul-escuro)}.aviso{margin-top:24px;padding:16px 18px;border-left:4px solid var(--azul);background:#eaf8fe;color:#405b68}@media(max-width:760px){.grade{grid-template-columns:1fr}.topo-conteudo,.cabecalho{align-items:flex-start;flex-direction:column}.principal{margin-top:24px}}
+  </style>
+  <style>button,.botao{clip-path:none!important}</style>
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+<body>
+  <header class="topo"><div class="topo-conteudo"><div class="marca">CENTRAL <span>LOCADORA</span></div><a class="voltar" href="LOCADORA_SISTEMA.HTML">← Voltar ao sistema</a></div></header>
+  <main class="principal">
+    <div class="cabecalho"><div><h1>Central de documentos</h1><p>Acesse os módulos responsáveis por emitir contratos, faturas e comprovantes.</p></div></div>
+    <section class="grade">
+      <article class="cartao"><div class="icone">📄</div><h2>Contratos</h2><p>Consulte contratos cadastrados e gere o PDF individual com cláusulas e veículos vinculados.</p><a class="botao" href="LOCADORA_CONTRATOS.HTML">Abrir contratos</a></article>
+      <article class="cartao"><div class="icone">💰</div><h2>Faturas</h2><p>Emita, edite e gere os PDFs das faturas de locação, multa ou manutenção.</p><a class="botao" href="LOCADORA_FINANCEIRO.HTML">Abrir financeiro</a></article>
+      <article class="cartao"><div class="icone">🔧</div><h2>Manutenções</h2><p>Consulte lançamentos de manutenção e gere os respectivos comprovantes em PDF.</p><a class="botao" href="LOCADORA_MANUTENCAO.HTML">Abrir manutenções</a></article>
+    </section>
+    <p class="aviso">Os documentos são gerados a partir dos registros do sistema. Os relatórios consolidados podem ser emitidos no módulo de Relatórios.</p>
+  </main>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script><script src="LOCADORA_ICONS.JS"></script>
+</body>
+</html>

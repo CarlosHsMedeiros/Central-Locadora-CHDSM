@@ -1,0 +1,197 @@
+/* Padrao global de impressao. Estas regras nao afetam a exibicao em tela. */
+@page {
+    size: A4;
+    margin: 12mm;
+}
+
+@media print {
+    .cabecalho-impressao-global {
+        display: flex !important;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8mm;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 6mm !important;
+        padding: 0 0 4mm !important;
+        border-bottom: 1mm solid #008fd0;
+        background: #fff !important;
+        color: #20313b !important;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+    .cabecalho-impressao-marca { display: flex !important; align-items: center; gap: 4mm; min-width: 0; }
+    .cabecalho-impressao-logo { display: block !important; width: auto !important; max-width: 38mm !important; max-height: 16mm !important; object-fit: contain; }
+    .cabecalho-impressao-global h1 { margin: 0 !important; color: #00558b !important; font-size: 18pt !important; line-height: 1.1 !important; text-transform: uppercase; }
+    .cabecalho-impressao-global p { margin: 1.5mm 0 0 !important; color: #5d707a !important; font-size: 8.5pt !important; line-height: 1.3 !important; }
+    .cabecalho-impressao-meta { flex: 0 0 auto; max-width: 65mm; text-align: right; font-size: 8pt; line-height: 1.45; color: #5d707a; }
+    .cabecalho-impressao-meta strong { display: block; color: #00558b; font-size: 10pt; text-transform: uppercase; }
+
+    .rodape-impressao-global {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8mm 0 0 !important;
+        padding: 3mm 0 0 !important;
+        border-top: 0.3mm solid #c9dce7;
+        background: #fff !important;
+        color: #5d707a !important;
+        font-size: 7.5pt !important;
+        line-height: 1.4 !important;
+        text-align: right;
+        page-break-inside: avoid;
+        break-inside: avoid-page;
+    }
+
+    .rodape-impressao-global strong {
+        color: #315668 !important;
+        font-weight: 600;
+    }
+    html,
+    body {
+        width: auto !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        /* Margem interna de seguranca quando o navegador força "Margens: nenhuma". */
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box !important;
+    }
+
+    main,
+    section,
+    article,
+    .estrutura,
+    .conteudo,
+    .container,
+    .painel,
+    .relatorio,
+    .documento-pdf,
+    .modal-conteudo,
+    .ficha {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        overflow: visible !important;
+    }
+
+    body > main:first-of-type,
+    body > .estrutura:first-of-type,
+    body > .conteudo:first-of-type,
+    body > .documento-pdf:first-of-type,
+    body > .modal:first-of-type {
+        margin-top: 0 !important;
+    }
+
+    img,
+    svg,
+    canvas,
+    video,
+    iframe,
+    .grafico,
+    .chart,
+    [class*="grafico"],
+    [class*="chart"] {
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain;
+        page-break-inside: avoid;
+        break-inside: avoid-page;
+    }
+
+    .tabela-container,
+    .tabela-scroll,
+    .table-responsive,
+    [class*="tabela"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow: visible !important;
+    }
+
+    table {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        border-collapse: collapse !important;
+        table-layout: auto !important;
+        page-break-inside: auto;
+        break-inside: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    tr,
+    th,
+    td {
+        max-width: 100% !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+    }
+
+    th,
+    td,
+    p,
+    li,
+    span,
+    strong,
+    small,
+    div {
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .card,
+    [class*="card-"],
+    [class$="-card"],
+    .ficha-secao,
+    .secao-relatorio,
+    .painel-info,
+    .bloco,
+    .resumo,
+    .status-item,
+    .cartao-dados,
+    figure,
+    blockquote {
+        max-width: 100% !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        page-break-after: avoid;
+        break-after: avoid-page;
+    }
+
+    p,
+    li {
+        orphans: 3;
+        widows: 3;
+    }
+}
+
+@media screen {
+    .cabecalho-impressao-global,
+    .rodape-impressao-global { display: none !important; }
+}

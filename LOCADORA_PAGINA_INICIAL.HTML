@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Serviços</title>
+
+    <link rel="stylesheet"
+          href="LOCADORA_PAGINA_INICIAL.CSS">
+
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     CABEÇALHO
+====================================================== -->
+
+<header class="topo">
+
+    <div class="topo-superior">
+
+
+        <!-- LOGOTIPO -->
+
+        <div class="logo-area">
+
+            <span class="logo-principal">
+                LOCADORA
+            </span>
+
+            <span class="logo-destaque">
+                DIGITAL
+            </span>
+
+            <span class="descricao-logo">
+                Gestão de Veículos
+            </span>
+
+        </div>
+
+
+        <!-- ACESSIBILIDADE -->
+
+        <div class="acessibilidade">
+
+            <button type="button">
+                A+
+            </button>
+
+            <button type="button">
+                A-
+            </button>
+
+            <button type="button">
+                ◐
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MENU
+    ====================================================== -->
+
+    <nav class="menu">
+
+        <a href="LOCADORA_PAGINA_INICIAL.HTML">
+            Home
+        </a>
+
+        <a href="#">
+            A Locadora
+        </a>
+
+        <a href="LOCADORA_VEICULOS.HTML">
+            Veículos
+        </a>
+
+        <a href="#servicos">
+            Serviços
+        </a>
+
+        <a href="#">
+            Dúvidas
+        </a>
+
+        <a href="#">
+            Contato
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     BANNER PRINCIPAL
+====================================================== -->
+
+<section class="banner">
+
+    <div class="banner-conteudo">
+
+        <h1>
+            Gestão de veículos de forma simples
+        </h1>
+
+        <p>
+            Consulte informações, contratos e serviços
+            da sua locadora.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ÁREA PRINCIPAL
+====================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         ÁREA DE LOGIN
+    ================================================== -->
+
+    <aside class="login">
+
+        <div class="login-titulo">
+
+            Área de Acesso
+
+        </div>
+
+        <div class="login-conteudo">
+
+            <h3>
+                Acesso ao sistema
+            </h3>
+
+
+            <p>
+                Digite seus dados para acessar sua conta:
+            </p>
+
+
+            <label for="usuario">
+                Usuário
+            </label>
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Digite seu usuário"
+            >
+
+
+            <label for="senha">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+            >
+
+
+            <button
+                class="btn-login"
+                type="button"
+                data-sec-click="h68"
+            >
+                Entrar
+            </button>
+
+
+            <a href="#" class="esqueci">
+                Esqueci minha senha
+            </a>
+
+
+            <a href="#" class="cadastro">
+                Criar uma conta
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         CONTEÚDO
+    ================================================== -->
+
+    <section class="conteudo">
+
+
+        <!-- =================================================
+             CARDS DE SERVIÇOS
+        ================================================== -->
+
+        <div class="cards">
+
+
+            <!-- =============================================
+                 CARD VEÍCULOS
+            ============================================== -->
+
+            <a
+                href="LOCADORA_VEICULOS.HTML"
+                class="card"
+            >
+
+                <div class="icone card-icone">
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16l1-5 3-4h10l3 4 1 5"/><path d="M5 16h14"/><path d="M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                </div>
+
+                <h2 class="card-titulo">
+                    Veículos
+                </h2>
+
+                <p>
+                    Consulte os veículos disponíveis
+                    na locadora.
+                </p>
+
+            </a>
+
+
+
+            <!-- =============================================
+                 CARD CONTRATOS
+            ============================================== -->
+
+            <a
+                href="LOCADORA_CONTRATOS.HTML"
+                class="card"
+            >
+
+                <div class="icone card-icone">
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6M9 19h4"/></svg>
+                </div>
+
+                <h2 class="card-titulo">
+                    Contratos
+                </h2>
+
+                <p>
+                    Consulte contratos e informações
+                    de locação.
+                </p>
+
+            </a>
+
+
+
+            <!-- =============================================
+                 CARD MANUTENÇÃO
+            ============================================== -->
+
+            <a
+                href="LOCADORA_MANUTENCAO.HTML"
+                class="card"
+            >
+
+                <div class="icone card-icone">
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4.3 4.3 0 0 0-5.7 5.7L3 18l3 3 5.8-5.8a4.3 4.3 0 0 0 5.7-5.7l-3 3-2-2z"/></svg>
+                </div>
+
+                <h2 class="card-titulo">
+                    Manutenção
+                </h2>
+
+                <p>
+                    Acompanhe as manutenções dos veículos.
+                </p>
+
+            </a>
+
+
+            <!-- =============================================
+                 CARD FINANCEIRO
+            ============================================== -->
+
+            <a
+                href="LOCADORA_FINANCEIRO.HTML"
+                class="card"
+            >
+
+                <div class="icone card-icone">
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></svg>
+                </div>
+
+                <h2 class="card-titulo">
+                    Financeiro
+                </h2>
+
+                <p>
+                    Acompanhe receitas, custos e saldo.
+                </p>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             GALERIA DE IMAGENS
+        ================================================== -->
+
+        <section class="galeria">
+
+            <h2>
+                Conheça nossa estrutura
+            </h2>
+
+
+            <div class="linha-imagens">
+
+
+                <!-- IMAGEM 1 -->
+
+                <div class="imagem-box">
+
+                    <img
+                        src="IMAGEM 1.png"
+                        alt="Imagem da locadora"
+                    >
+
+                    <h3>
+                        Nossa Locadora
+                    </h3>
+
+                    <p>
+                        Conheça nossa estrutura e nossos
+                        serviços.
+                    </p>
+
+                </div>
+
+
+
+                <!-- IMAGEM 2 -->
+
+                <div class="imagem-box">
+
+                    <img
+                        src="IMAGEM 2.png"
+                        alt="Veículos da locadora"
+                    >
+
+                    <h3>
+                        Nossa Frota
+                    </h3>
+
+                    <p>
+                        Conheça os veículos disponíveis
+                        para locação.
+                    </p>
+
+                </div>
+
+
+
+                <!-- IMAGEM 3 -->
+
+                <div class="imagem-box">
+
+                    <img
+                        src="IMAGEM 3.png"
+                        alt="Atendimento"
+                    >
+
+                    <h3>
+                        Atendimento
+                    </h3>
+
+                    <p>
+                        Conte com nossa equipe para
+                        encontrar a melhor solução.
+                    </p>
+
+                </div>
+
+
+
+                <!-- IMAGEM 4 -->
+
+                <div class="imagem-box">
+
+                    <img
+                        src="IMAGEM 4.png"
+                        alt="Serviços da locadora"
+                    >
+
+                    <h3>
+                        Nossos Serviços
+                    </h3>
+
+                    <p>
+                        Soluções para facilitar a gestão
+                        da sua locação.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SERVIÇOS DISPONÍVEIS
+        ================================================== -->
+
+        <section
+            class="informacoes"
+            id="servicos"
+        >
+
+            <h2>
+                Serviços disponíveis
+            </h2>
+
+
+            <div class="lista-servicos">
+
+
+                <a href="LOCADORA_VEICULOS.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16l1-5 3-4h10l3 4 1 5"/><path d="M5 16h14"/><path d="M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span>Cadastro de veículos</span>
+
+                </a>
+
+
+                <a href="LOCADORA_CLIENTES.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5a3 3 0 0 1 0 6m2.5 9a5 5 0 0 0-3-4.6"/></svg><span>Cadastro de clientes</span>
+
+                </a>
+
+
+                <a href="LOCADORA_CONTRATOS.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 11h6M9 15h6M9 19h4"/></svg><span>Gestão de contratos</span>
+
+                </a>
+
+
+                <a href="LOCADORA_MULTAS.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.8 20h18.4z"/><path d="M12 9v4m0 4h.01"/></svg><span>Controle de multas</span>
+
+                </a>
+
+
+                <a href="LOCADORA_MANUTENCAO.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4.3 4.3 0 0 0-5.7 5.7L3 18l3 3 5.8-5.8a4.3 4.3 0 0 0 5.7-5.7l-3 3-2-2z"/></svg><span>Controle de manutenção</span>
+
+                </a>
+
+
+                <a href="LOCADORA_FINANCEIRO.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></svg><span>Gestão financeira</span>
+
+                </a>
+
+
+                <a href="LOCADORA_DOCUMENTOS.HTML">
+
+                    <svg class="icone-vetor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 12h6m-6 4h5"/></svg><span>Controle de documentos</span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     RODAPÉ
+====================================================== -->
+
+<footer>
+
+    <div class="footer-conteudo">
+
+
+        <div>
+
+            <strong>
+                CENTRAL LOCADORA
+            </strong>
+
+            <p>
+                Gestão de veículos
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Atendimento
+            </strong>
+
+            <p>
+                Segunda a sexta-feira
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Contato
+            </strong>
+
+            <p>
+                contato@example.com
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Central Locadora — Todos os direitos reservados.
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="LOCADORA_INLINE_LOCADORA_PAGINA_INICIAL_1.JS"></script>
+<script src="api.js"></script>
+<script
+    src="LOCADORA_PAGINA_INICIAL.JS">
+</script>
+
+
+<script src="LOCADORA_NAVEGACAO.JS"></script>
+<script src="LOCADORA_ICONS.JS"></script>
+<script src="LOCADORA_IMPRESSAO.JS"></script>
+</body>
+
+</html>

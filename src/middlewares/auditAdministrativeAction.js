@@ -1,0 +1,2 @@
+const repository=require("../repositories/authRepository");
+module.exports=function auditAdministrativeAction(req,res,next){if(req.user?.perfil!=="administrador"||["GET","HEAD","OPTIONS"].includes(req.method))return next();res.on("finish",()=>{if(res.statusCode<400)repository.audit({userId:req.user.id,action:"ADMIN_ACTION",entity:"http",newData:{method:req.method,path:req.originalUrl,status:res.statusCode},ip:req.ip,userAgent:req.get("user-agent")}).catch(error=>console.error("Falha ao registrar auditoria administrativa",error));});next();};

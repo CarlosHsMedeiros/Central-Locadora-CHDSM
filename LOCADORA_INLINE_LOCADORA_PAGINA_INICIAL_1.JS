@@ -1,0 +1,1 @@
+if(location.port==="5500"){location.replace(`http://127.0.0.1:3000${location.pathname}${location.search}${location.hash}`);}

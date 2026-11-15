@@ -1,0 +1,7 @@
+const r=require("express").Router(),repo=require("../repositories/operacaoRepository"),HttpError=require("../utils/httpError");
+const writers={multas:["administrador","atendimento","financeiro"],manutencoes:["administrador","manutenção"],faturas:["administrador","financeiro"],checklistsVeiculos:["administrador","atendimento","manutenção"],configuracoesEmpresa:["administrador"],camposFotoChecklist:["administrador"],historicoRelatoriosEmitidos:["administrador","atendimento","manutenção","financeiro","consulta"]};
+r.get("/",async(req,res,next)=>{try{res.json(await repo.snapshot());}catch(e){next(e);}});
+r.get("/faturas/historico",require("../middlewares/authorize")("administrador","financeiro"),async(req,res,next)=>{try{res.json(await require("../services/faturaAuditService").history(req.query));}catch(e){next(e);}});
+r.put("/:key",(req,res,next)=>{if(req.params.key==="faturas"&&req.body?.senha){req.body.usuario=req.user.usuario;return require("../middlewares/loginRateLimit")(req,res,next);}next();},async(req,res,next)=>{try{if(!writers[req.params.key]?.includes(req.user.perfil))throw new HttpError(403,"FORBIDDEN","Você não possui permissão para alterar estes dados.");res.json(await repo.write(req.params.key,req.body,req.user));}catch(e){next(e);}});
+r.post("/importar/:stage",require("../middlewares/authorize")("administrador"),async(req,res,next)=>{try{res.json({data:await require("../services/migracaoService").migrate(req.params.stage,req.body)});}catch(error){next(error);}});
+module.exports=r;

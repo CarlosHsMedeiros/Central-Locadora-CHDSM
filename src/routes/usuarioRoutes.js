@@ -1,0 +1,1 @@
+const r=require("express").Router(),c=require("../controllers/usuarioController"),a=require("../middlewares/authorize")("administrador");r.use(a);r.get("/",c.list);r.post("/",c.create);r.delete("/:id",c.remove);module.exports=r;

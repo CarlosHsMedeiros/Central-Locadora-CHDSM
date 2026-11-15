@@ -1,0 +1,10 @@
+#secaoNfse .nfse-grade,.nfse-dialog .nfse-grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+#secaoNfse label,.nfse-dialog label{display:flex;flex-direction:column;gap:6px;min-width:0;font-size:13px;color:#315668}
+#secaoNfse input,#secaoNfse select,.nfse-dialog input{box-sizing:border-box;width:100%;min-width:0;padding:9px;border:1px solid #b8cdd9;border-radius:6px;background:#fff;font:14px Arial}
+#secaoNfse button,.nfse-dialog button,.nfse-dialog a{clip-path:none!important;min-height:36px;padding:9px 12px;margin:6px 0;border:1px solid #008fd0;border-radius:6px;background:#008fd0;color:#fff;font:13px Arial;text-decoration:none;cursor:pointer;text-transform:none!important}
+#secaoNfse button:disabled,.nfse-dialog button:disabled{opacity:.45;cursor:not-allowed}
+#secaoNfse [role=status],.nfse-dialog [role=status]{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;background:#eef7fc;border-radius:6px}
+#secaoNfse .nfse-certificado{margin-top:24px;padding-top:18px;border-top:1px solid #dbe5eb}
+.nfse-dialog{margin:auto;padding:24px;width:min(720px,94vw);max-height:90vh;overflow:auto;border:1px solid #c5d7e1;border-radius:12px;box-shadow:0 16px 60px #18374730;color:#24343d;font:14px/1.5 'Segoe UI',Arial,sans-serif}
+.nfse-dialog::backdrop{background:#102e4266}.nfse-dialog h2{font-size:21px;color:#00558b;margin-bottom:14px}.nfse-acoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.nfse-dialog [hidden]{display:none!important}
+@media(max-width:600px){#secaoNfse .nfse-grade,.nfse-dialog .nfse-grade{grid-template-columns:1fr}}

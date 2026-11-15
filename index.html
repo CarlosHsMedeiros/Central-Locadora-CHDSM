@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Central Locadora</title><link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">CL</span><div><strong>CENTRAL</strong><small>LOCADORA</small></div></div>
+      <nav id="menuPrincipal" aria-label="Navegação principal">
+        <button class="nav-item active" data-view="inicio">⌂ <span>Visão geral</span></button>
+        <button class="nav-item" data-view="veiculos">▣ <span>Veículos</span></button>
+        <button class="nav-item" data-view="clientes">♙ <span>Clientes</span></button>
+        <button class="nav-item" data-view="contratos">▤ <span>Contratos</span></button>
+        <button class="nav-item" data-view="multas">⚠ <span>Multas</span></button>
+        <button class="nav-item" data-view="manutencoes">⌕ <span>Manutenções</span></button>
+        <button class="nav-item" data-view="financeiro">$ <span>Financeiro</span></button>
+        <button class="nav-item" data-view="relatorios">▥ <span>Relatórios</span></button>
+        <button class="nav-item" data-view="configuracoes">⚙ <span>Configurações</span></button>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span> Sistema local protegido</div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><button class="menu-mobile" id="menuMobile">☰</button><div><p class="breadcrumb" id="breadcrumb">Painel</p><h1 id="tituloPagina">Visão geral</h1></div><div class="user-chip"><span class="avatar" id="avatarUsuario">A</span><div><strong id="nomeUsuario">Administrador</strong><small id="cargoUsuario">Administrador</small></div></div></header>
+      <section id="tela" class="page-content"></section>
+    </main>
+  </div>
+  <template id="template-dashboard"><div class="welcome"><div><span class="eyebrow">GESTÃO INTEGRADA</span><h2>Controle sua frota com clareza.</h2><p>Dados organizados de veículos, contratos, clientes e financeiro em um só lugar.</p></div><button class="primary" data-action="relatorios">Ver relatórios</button></div><div class="metric-grid" id="metricas"></div><section class="panel"><div class="panel-heading"><div><span class="eyebrow">ATIVIDADE RECENTE</span><h3>Visão operacional</h3></div></div><div id="atividade" class="activity-list"></div></section></template>
+  <template id="template-relatorios"><section class="panel report-filter"><div class="panel-heading"><div><span class="eyebrow">RELATÓRIOS SOB DEMANDA</span><h3>Defina o que deseja consultar</h3><p>As informações só são exibidas após a geração.</p></div></div><div class="form-grid"><label>Data inicial<input type="date" id="dataInicial"></label><label>Data final<input type="date" id="dataFinal"></label><label>Modelo do veículo<select id="filtroModelo"><option value="">Todos os modelos</option></select></label><label>Cliente(s)<select id="filtroCliente" multiple size="4"></select><small>Use Ctrl para selecionar mais de um cliente.</small></label></div><fieldset class="choices"><legend>Itens do relatório</legend><label><input type="checkbox" value="frota" checked> Frota e gráficos</label><label><input type="checkbox" value="veiculos" checked> Veículos</label><label><input type="checkbox" value="contratos"> Clientes e contratos</label><label><input type="checkbox" value="multas"> Multas</label><label><input type="checkbox" value="manutencoes"> Manutenções</label><label><input type="checkbox" value="financeiro"> Financeiro</label></fieldset><div class="actions"><button class="secondary" id="limparRelatorio">Limpar</button><button class="primary" id="gerarRelatorio">Gerar relatório</button></div></section><div id="resultadoRelatorio" hidden></div></template>
+  <script src="app.js"></script>
+<script src="LOCADORA_IMPRESSAO.JS"></script></body></html>

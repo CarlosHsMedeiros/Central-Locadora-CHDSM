@@ -1,0 +1,5 @@
+const HttpError=require("../utils/httpError");
+const stages=["clientes","veiculos","contratos","multas","manutencoes","faturas","checklistsVeiculos","configuracoesEmpresa","camposFotoChecklist","historicoRelatoriosEmitidos"];
+function stage(value){if(!stages.includes(value))throw new HttpError(400,"INVALID_MIGRATION_STAGE","Etapa de migração inválida.");return value;}
+function batch(body){if(!body||!Array.isArray(body.registros))throw new HttpError(400,"VALIDATION_ERROR","registros deve ser um array.");if(body.registros.length>1000)throw new HttpError(400,"VALIDATION_ERROR","Cada lote aceita no máximo 1000 registros.");return body.registros.map((item,index)=>{if(!item||typeof item!=="object"||Array.isArray(item))return {indice:index,idLegado:null,dados:null};const indice=Number.isInteger(item.indice)&&item.indice>=0?item.indice:index;const idLegado=item.idLegado===undefined||item.idLegado===null||item.idLegado===""?null:String(item.idLegado).slice(0,191);return {indice,idLegado,dados:item.dados};});}
+module.exports={stage,batch,stages};

@@ -1,0 +1,3 @@
+const test=require("node:test"),assert=require("node:assert/strict"),v=require("../src/validators/operacaoValidator");
+const base={tipo:"Loca\u00e7\u00e3o",clienteId:"1",contratosIds:[],descricao:"Fatura avulsa",vencimento:"2026-10-10",valorBase:100,itensVeiculos:[]};
+test("fatura sem contrato exige escolha explicita e preserva cliente obrigatorio",()=>{assert.throws(()=>v.normalize("faturas",base));const r=v.normalize("faturas",{...base,semContrato:true});assert.equal(r.contratoId,null);assert.equal(r.semContrato,true);assert.throws(()=>v.normalize("faturas",{...base,semContrato:true,clienteId:null}));assert.throws(()=>v.normalize("faturas",{...base,semContrato:true,contratosIds:["1"]}));});

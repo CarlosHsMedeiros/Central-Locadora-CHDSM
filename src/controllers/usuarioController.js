@@ -1,0 +1,1 @@
+const s=require("../services/usuarioService");const h=f=>async(req,res,next)=>{try{await f(req,res);}catch(e){next(e);}};module.exports={list:h(async(req,res)=>res.json(await s.list())),create:h(async(req,res)=>res.status(201).json(await s.create(req.body))),remove:h(async(req,res)=>{await s.remove(req.params.id,req.user.id);res.status(204).end();})};

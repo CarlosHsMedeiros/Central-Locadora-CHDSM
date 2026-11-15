@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Sistema</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f4f4f4;
+
+            color: #333;
+
+        }
+
+
+        /* ==============================
+           CABEÇALHO
+        ============================== */
+
+        header {
+
+            background: white;
+
+        }
+
+
+        .topo {
+
+            height: 145px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+        }
+
+
+        .logo-principal {
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            color: #111;
+
+        }
+
+
+        .logo-destaque {
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            color: #008fd0;
+
+        }
+
+
+        .descricao {
+
+            margin-left: 12px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            font-style: italic;
+
+        }
+
+
+        .usuario-area {
+
+            text-align: right;
+
+            font-size: 14px;
+
+        }
+
+
+        .usuario-area strong {
+
+            color: #00558b;
+
+        }
+
+
+        .sair {
+
+            display: inline-block;
+
+            margin-top: 8px;
+
+            color: #008fd0;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        /* ==============================
+           MENU SUPERIOR
+        ============================== */
+
+        .menu {
+
+            height: 66px;
+
+            background: #008fd0;
+
+            display: flex;
+
+            align-items: center;
+
+            padding-left: 8%;
+
+            gap: 35px;
+
+        }
+
+
+        .menu a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+        }
+
+
+        .menu a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==============================
+           ESTRUTURA PRINCIPAL
+        ============================== */
+
+        .estrutura {
+
+            width: 84%;
+
+            margin: 20px auto;
+
+            display: grid;
+
+            grid-template-columns: 260px 1fr;
+
+            gap: 30px;
+
+        }
+
+
+        /* ==============================
+           MENU LATERAL
+        ============================== */
+
+        .lateral {
+
+            background: white;
+
+            height: fit-content;
+
+            border: 1px solid #ddd;
+
+            box-shadow:
+                0 2px 5px
+                rgba(0,0,0,0.10);
+
+        }
+
+
+        .lateral-titulo {
+
+            background: #008fd0;
+
+            color: white;
+
+            font-weight: bold;
+
+            padding: 17px;
+
+        }
+
+
+        .opcao {
+
+            display: block;
+
+            padding: 15px;
+
+            color: #333;
+
+            text-decoration: none;
+
+            border-bottom: 1px solid #ddd;
+
+            cursor: pointer;
+
+        }
+
+
+        .opcao:hover {
+
+            background: #eef8fc;
+
+            color: #008fd0;
+
+        }
+
+
+        /* ==============================
+           CONTEÚDO
+        ============================== */
+
+        .conteudo {
+
+            min-width: 0;
+
+        }
+
+
+        .titulo {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .titulo h1 {
+
+            font-size: 28px;
+
+            color: #333;
+
+        }
+
+
+        .titulo p {
+
+            margin-top: 8px;
+
+            color: #555;
+
+        }
+
+
+        /* ==============================
+           AVISO
+        ============================== */
+
+        .aviso {
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            background: #dff3fc;
+
+            border: 1px solid #a9dced;
+
+        }
+
+
+        .aviso strong {
+
+            display: block;
+
+            color: #006a96;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        /* ==============================
+           CARDS
+        ============================== */
+
+        .cards {
+
+            margin-top: 22px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            border: 1px solid #ddd;
+
+            min-height: 160px;
+
+            transition: 0.2s;
+
+            cursor: pointer;
+
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 4px 10px
+                rgba(0,0,0,0.12);
+
+        }
+
+
+        .card-titulo {
+
+            background: #008fd0;
+
+            color: white;
+
+            padding: 13px;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+        }
+
+
+        .card-conteudo {
+
+            padding: 18px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .card-icone {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* ==============================
+           RODAPÉ
+        ============================== */
+
+        footer {
+
+            margin-top: 50px;
+
+            background: #064c70;
+
+            color: white;
+
+            padding: 25px;
+
+            text-align: center;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ==============================
+           RESPONSIVO
+        ============================== */
+
+        @media (max-width: 900px) {
+
+            .estrutura {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .cards {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .menu {
+
+                overflow-x: auto;
+
+                padding-left: 20px;
+
+            }
+
+        }
+
+    </style>
+
+<style>
+/* Botões com acabamento inclinado padronizado */
+button:not(.modal-fechar) { position: relative; isolation: isolate; overflow: hidden; background: #008fd0 !important; color: #fff !important; border: 1px solid #008fd0 !important; text-transform: uppercase; transition: all .35s ease; clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); }
+button:not(.modal-fechar)::before { content: ""; position: absolute; inset: 0; left: -110%; background: #fff; opacity: 0; z-index: -1; transition: all .35s ease; }
+button:not(.modal-fechar):hover { background: #fff !important; color: #008fd0 !important; }
+button:not(.modal-fechar):hover::before { left: 0; opacity: 1; }
+</style>
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         CABEÇALHO
+    ====================================== -->
+
+    <header>
+
+        <div class="topo">
+
+
+            <div class="logo">
+
+                <span class="logo-principal">
+                    LOCADORA
+                </span>
+
+                <span class="logo-destaque">
+                    DIGITAL
+                </span>
+
+                <span class="descricao">
+                    Gestão de Veículos
+                </span>
+
+            </div>
+
+
+            <div class="usuario-area">
+
+                Usuário:
+
+                <strong id="nomeUsuario">
+                    Usuário
+                </strong>
+
+                <br>
+
+                <a
+                    class="sair"
+                    data-sec-click="h3"
+                >
+
+                    Sair do sistema
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- MENU SUPERIOR -->
+
+        <nav class="menu">
+
+            <a href="LOCADORA_SISTEMA.HTML">
+                Início
+            </a>
+
+            <a href="LOCADORA_VEICULOS.HTML">
+                Veículos
+            </a>
+
+            <a href="LOCADORA_CLIENTES.HTML">
+                Clientes
+            </a>
+
+            <a href="LOCADORA_CONTRATOS.HTML">
+                Contratos
+            </a>
+
+            <a href="LOCADORA_MULTAS.HTML">
+                Multas
+            </a>
+
+            <a href="LOCADORA_MANUTENCAO.HTML">
+                Manutenção
+            </a>
+
+            <a href="LOCADORA_FINANCEIRO.HTML">
+                Financeiro
+            </a>
+
+            <a href="LOCADORA_RELATORIOS.HTML">
+                Relatórios
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================
+         ESTRUTURA PRINCIPAL
+    ====================================== -->
+
+    <main class="estrutura">
+
+
+        <!-- =================================
+             MENU LATERAL
+        ================================== -->
+
+        <aside class="lateral">
+
+
+            <div class="lateral-titulo">
+
+                Serviços
+
+            </div>
+
+
+            <a
+                class="opcao"
+                href="LOCADORA_VEICULOS.HTML"
+            >
+
+                🚗 Veículos
+
+            </a>
+
+
+            <a class="opcao"
+               href="LOCADORA_CLIENTES.HTML">
+
+                👤 Clientes
+
+            </a>
+
+
+            <a class="opcao"
+               href="LOCADORA_CONTRATOS.HTML">
+
+                📄 Contratos
+
+            </a>
+
+
+            <a class="opcao"
+               href="LOCADORA_MULTAS.HTML">
+
+                ⚠️ Multas
+
+            </a>
+
+
+            <a class="opcao"
+               href="LOCADORA_MANUTENCAO.HTML">
+
+                🔧 Manutenção
+
+            </a>
+
+            <a class="opcao"
+               href="LOCADORA_FINANCEIRO.HTML">
+
+                💰 Financeiro
+
+            </a>
+
+
+            <a class="opcao">
+
+                📎 Documentos
+
+            </a>
+
+
+            <a class="opcao"
+               href="LOCADORA_RELATORIOS.HTML">
+
+                📊 Relatórios
+
+            </a>
+
+
+            <a class="opcao" href="LOCADORA_CONFIGURACOES.HTML">
+
+                ⚙️ Configurações
+
+            </a>
+
+
+        </aside>
+
+
+
+        <!-- =================================
+             CONTEÚDO
+        ================================== -->
+
+        <section class="conteudo">
+
+
+            <div class="titulo">
+
+                <h1>
+                    Bem-vindo(a) ao sistema!
+                </h1>
+
+                <p>
+                    Acesse as funcionalidades da
+                    Central Locadora pelo menu.
+                </p>
+
+            </div>
+
+
+
+            <!-- AVISO -->
+
+            <div class="aviso">
+
+                <strong>
+                    Aviso
+                </strong>
+
+                Este espaço será utilizado para
+                apresentar comunicados importantes,
+                informações sobre a frota,
+                documentos e avisos da locadora.
+
+            </div>
+
+
+
+            <!-- =================================
+                 CARDS
+            ================================== -->
+
+            <div class="cards">
+
+
+                <!-- VEÍCULOS -->
+
+                <div
+                    class="card"
+                    data-sec-click="h69"
+                >
+
+                    <div class="card-titulo">
+
+                        🚗 Veículos
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            🚘
+
+                        </div>
+
+                        Consulte e gerencie
+                        os veículos da frota.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CLIENTES -->
+
+                <div class="card"
+                    data-sec-click="h70">
+
+                    <div class="card-titulo">
+
+                        👤 Clientes
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            👥
+
+                        </div>
+
+                        Consulte e gerencie
+                        os clientes cadastrados.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONTRATOS -->
+
+                <div class="card"
+                    data-sec-click="h71">
+
+                    <div class="card-titulo">
+
+                        📄 Contratos
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            📋
+
+                        </div>
+
+                        Controle os contratos
+                        de locação.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MULTAS -->
+
+                <div class="card"
+                    data-sec-click="h72">
+
+                    <div class="card-titulo">
+
+                        ⚠️ Multas
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            🚨
+
+                        </div>
+
+                        Controle as multas
+                        relacionadas à frota.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MANUTENÇÃO -->
+
+                <div class="card"
+                    data-sec-click="h73">
+
+                    <div class="card-titulo">
+
+                        🔧 Manutenção
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            🛠️
+
+                        </div>
+
+                        Acompanhe manutenções
+                        e serviços dos veículos.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FINANCEIRO -->
+
+                <div class="card"
+                    data-sec-click="h74">
+
+                    <div class="card-titulo">
+
+                        💰 Financeiro
+
+                    </div>
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            💵
+
+                        </div>
+
+                        Acompanhe receitas, custos
+                        e o saldo da locadora.
+
+                    </div>
+
+                </div>
+
+
+                <!-- RELATÓRIOS -->
+
+                <div class="card"
+                    data-sec-click="h75">
+
+                    <div class="card-titulo">
+
+                        📊 Relatórios
+
+                    </div>
+
+
+                    <div class="card-conteudo">
+
+                        <div class="card-icone">
+
+                            📈
+
+                        </div>
+
+                        Consulte indicadores
+                        e relatórios da locadora.
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================
+         RODAPÉ
+    ====================================== -->
+
+    <footer>
+
+        CENTRAL LOCADORA
+
+        <br>
+
+        Sistema de Gestão de Veículos
+
+    </footer>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script type="text/plain" data-banco-src="LOCADORA_INLINE_LOCADORA_SISTEMA_1.JS"></script>
+
+
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+
+</html>

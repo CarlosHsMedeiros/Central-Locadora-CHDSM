@@ -1,0 +1,16 @@
+const r=require('express').Router(),s=require('../services/nfseService'),authorize=require('../middlewares/authorize');
+const action=fn=>async(req,res,next)=>{try{res.json({data:await fn(req)});}catch(e){next(e);}};
+r.get('/configuracoes',authorize('administrador','financeiro'),action(()=>s.publicSettings()));
+r.put('/configuracoes',authorize('administrador'),action(req=>s.saveSettings(req.body,req.user)));
+r.post('/certificado',authorize('administrador'),action(req=>s.saveCertificate(req.body,req.user)));
+r.use(authorize('administrador','financeiro'));
+r.get('/atualizacoes',action(()=>require('../services/nfseUpdates').check()));
+r.post('/faturas/:id/prever',action(req=>s.preview(req.params.id,req.body)));
+r.get('/faturas/:id',action(req=>s.status(req.params.id)));
+r.post('/faturas/:id/emitir',action(req=>s.emit(req.params.id,req.body,req.user)));
+r.post('/faturas/:id/consultar',action(req=>s.consult(req.params.id,req.user)));
+r.post('/faturas/:id/reenviar',action(req=>s.resend(req.params.id,req.body,req.user)));
+r.get('/faturas/:id/xml',async(req,res,next)=>{try{const d=await s.download(req.params.id);res.type('application/xml').set('Content-Disposition',`attachment; filename="NFSe-${d.chave}.xml"`).send(d.xml);}catch(e){next(e);}});
+r.get('/faturas/:id/danfse',async(req,res,next)=>{try{const d=await s.downloadPdf(req.params.id,req.user);res.set('X-NFSe-PDF-Origem',d.local?'local':'oficial').type('application/pdf').set('Cache-Control','no-store').set('Content-Disposition',`attachment; filename="${d.local?'Consulta-NFSe':'DANFSe'}-${d.chave}.pdf"`).send(d.pdf);}catch(e){if(e.code==='NFSE_PDF_UNAVAILABLE')return res.status(503).json({error:{code:e.code,message:e.message}});next(e);}});
+r.get('/faturas/:id/cancelamento',async(req,res,next)=>{try{const d=await s.downloadCancellation(req.params.id);res.type('application/xml').set('Cache-Control','no-store').set('Content-Disposition',`attachment; filename="Cancelamento-${d.chave}.xml"`).send(d.xml);}catch(e){next(e);}});
+module.exports=r;

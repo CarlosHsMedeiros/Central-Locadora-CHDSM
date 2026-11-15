@@ -1,0 +1,4 @@
+const test=require('node:test'),assert=require('node:assert/strict'),{analyze}=require('../src/services/nfseUpdates');
+const names=['nfse-esquemas_xsd-v1-01-20260209.zip','anexo_i-sefin_adn-dps_nfse-snnfse-v1-01-20260209.xlsx','anexo_b-nbs2-lista_servico_nacional-snnfse-v1-01-20260122.xlsx'];
+const html=items=>items.map(n=>'<a href="'+n+'">arquivo</a>').join('');
+test('referencias oficiais atuais, alteradas e indisponiveis',()=>{assert.equal(analyze(html(names)).status,'semAlteracao');assert.equal(analyze(html([...names,'nfse-esquemas_xsd-v1-02-20261015.zip'])).status,'revisar');assert.equal(analyze(html(names.slice(1))).status,'revisar');assert.equal(analyze('<html>bloqueado</html>').status,'indisponivel');assert.equal(analyze(html(names.map(n=>'https://outro.example/'+n))).status,'indisponivel');});

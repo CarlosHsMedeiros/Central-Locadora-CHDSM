@@ -1,0 +1,66 @@
+/* Margens internas padronizadas para listas e tabelas na interface. */
+@media screen {
+    .tabela-container > table {
+        width: calc(100% - 48px) !important;
+        max-width: calc(100% - 48px) !important;
+        margin: 0 24px 24px !important;
+    }
+
+    .tabela-container > .tabela-scroll {
+        width: calc(100% - 48px) !important;
+        max-width: calc(100% - 48px) !important;
+        margin: 0 24px 24px !important;
+    }
+
+    .tabela-container > .mensagem-vazia {
+        margin: 0 24px 24px;
+    }
+
+    .tabela-wrapper {
+        width: calc(100% - 48px) !important;
+        max-width: calc(100% - 48px) !important;
+        margin-left: 24px !important;
+        margin-right: 24px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .tabela {
+        width: calc(100% - 48px);
+        max-width: calc(100% - 48px);
+        margin-left: 24px;
+        margin-right: 24px;
+        overflow: hidden;
+    }
+
+    .lista-checklists,
+    .lista-campos-checklist,
+    .lista-servicos {
+        margin-left: 24px !important;
+        margin-right: 24px !important;
+    }
+
+    .lista-checklists {
+        margin-bottom: 24px !important;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .tabela-container > table,
+    .tabela-container > .tabela-scroll,
+    .tabela-wrapper,
+    .tabela {
+        width: calc(100% - 28px) !important;
+        max-width: calc(100% - 28px) !important;
+        margin-left: 14px !important;
+        margin-right: 14px !important;
+    }
+
+    .tabela-container > .mensagem-vazia,
+    .lista-checklists,
+    .lista-campos-checklist,
+    .lista-servicos {
+        margin-left: 14px !important;
+        margin-right: 14px !important;
+    }
+}

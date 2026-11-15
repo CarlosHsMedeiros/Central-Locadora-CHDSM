@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Relatórios</title>
+
+    <link rel="stylesheet"
+          href="LOCADORA_RELATORIOS.CSS">
+
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+    <link rel="stylesheet" href="RELATORIOS_INTERFACE.CSS">
+    <style media="print">
+        @page { size: A4 landscape; margin: 8mm; }
+        html, body { width: 100% !important; padding: 0 !important; }
+        body.imprimir-topico .conteudo { width: 100% !important; max-width: 100% !important; }
+        body.imprimir-topico .topico-impressao { width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+    </style>
+</head>
+
+
+<body class="relatorios-workspace">
+
+
+<header>
+
+    <div class="topo">
+
+        <div class="logo">
+
+            <span class="logo-principal">
+                LOCADORA
+            </span>
+
+            <span class="logo-destaque">
+                DIGITAL
+            </span>
+
+            <span class="descricao">
+                Gestão de Veículos
+            </span>
+
+        </div>
+
+
+        <div class="usuario-area">
+
+            Usuário:
+
+            <strong id="nomeUsuario">
+                Usuário
+            </strong>
+
+            <br>
+
+            <a href="#"
+               data-sec-click="h43">
+
+                Sair do sistema
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="LOCADORA_SISTEMA.HTML">
+            Início
+        </a>
+
+        <a href="LOCADORA_VEICULOS.HTML">
+            Veículos
+        </a>
+
+        <a href="LOCADORA_CLIENTES.HTML">
+            Clientes
+        </a>
+
+        <a href="LOCADORA_CONTRATOS.HTML">
+            Contratos
+        </a>
+
+        <a href="LOCADORA_MULTAS.HTML">
+            Multas
+        </a>
+
+        <a href="LOCADORA_MANUTENCAO.HTML">
+            Manutenção
+        </a>
+
+        <a href="LOCADORA_FINANCEIRO.HTML">
+            Financeiro
+        </a>
+
+        <a href="LOCADORA_RELATORIOS.HTML"
+           class="ativo">
+
+            Relatórios
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="estrutura">
+
+
+    <!-- ==========================================
+         MENU LATERAL
+    =========================================== -->
+
+    <aside class="lateral">
+
+        <div class="lateral-titulo">
+            Serviços
+        </div>
+
+
+        <a class="opcao"
+           href="LOCADORA_VEICULOS.HTML">
+
+            🚗 Veículos
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_CLIENTES.HTML">
+
+            👤 Clientes
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_CONTRATOS.HTML">
+
+            📄 Contratos
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MULTAS.HTML">
+
+            ⚠️ Multas
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MANUTENCAO.HTML">
+
+            🔧 Manutenção
+
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_FINANCEIRO.HTML">
+
+            💰 Financeiro
+
+        </a>
+
+
+        <a class="opcao"
+           href="#">
+
+            📎 Documentos
+
+        </a>
+
+
+        <a class="opcao ativo-lateral"
+           href="LOCADORA_RELATORIOS.HTML">
+
+            📊 Relatórios
+
+        </a>
+
+
+        <a class="opcao link-configuracoes"
+           href="LOCADORA_CONFIGURACOES.HTML">
+
+            ⚙️ Configurações
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         CONTEÚDO
+    =========================================== -->
+
+    <section class="conteudo"
+             id="areaRelatorio">
+
+
+        <!-- CABEÇALHO -->
+
+
+<div class="cabecalho-pagina no-print"><div><p class="caminho-pagina">GESTÃO / RELATÓRIOS</p><h1>Central de relatórios</h1><p>Consulte sua operação e transforme os dados em documentos.</p></div><div class="acoes-relatorio"><button type="button" id="atualizarDadosRelatorios" class="botao-secundario">Atualizar dados</button><button type="button" id="imprimirResultados" class="botao-secundario" disabled>Imprimir / PDF</button></div></div>
+<section class="catalogo-relatorios no-print" aria-labelledby="tituloCatalogo"><div class="etapa-titulo"><span class="etapa-numero">1</span><div><h2 id="tituloCatalogo">Escolha o relatório</h2><p>Selecione uma categoria para começar.</p></div></div>
+<div class="catalogo-grade" role="group" aria-label="Categorias de relatórios"><button type="button" class="relatorio-opcao" data-tipo="frota" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">01</span><span><strong>Visão da frota</strong><small>Disponibilidade e indicadores</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="veiculos" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">02</span><span><strong>Veículos</strong><small>Relação cadastral e locações</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="licenciamento" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">03</span><span><strong>Licenciamento</strong><small>CRLV, prazos e final da placa</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="contratos" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">04</span><span><strong>Contratos</strong><small>Clientes, períodos e valores</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="multas" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">05</span><span><strong>Multas</strong><small>Infrações e responsáveis</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="manutencoes" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">06</span><span><strong>Manutenções</strong><small>Serviços, oficinas e custos</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="financeiro" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">07</span><span><strong>Financeiro</strong><small>Receitas, despesas e saldo</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="faturas" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">08</span><span><strong>Faturas</strong><small>Vencimentos e pagamentos</small></span><span class="categoria-seta" aria-hidden="true">›</span></button><button type="button" class="relatorio-opcao" data-tipo="personalizado" aria-pressed="false"><span class="categoria-icone" aria-hidden="true">09</span><span><strong>Personalizado</strong><small>Combine vários relatórios</small></span><span class="categoria-seta" aria-hidden="true">›</span></button></div>
+<select id="tipoRelatorio" hidden aria-hidden="true" tabindex="-1"><option value="frota">Visão da frota</option><option value="veiculos">Veículos</option><option value="licenciamento">Licenciamento</option><option value="contratos">Contratos</option><option value="multas">Multas</option><option value="manutencoes">Manutenções</option><option value="financeiro">Financeiro</option><option value="faturas">Faturas</option><option value="personalizado">Personalizado</option><option value="geral">Geral</option></select>
+<div class="seletores-relatorio" id="selecaoPersonalizada" hidden><strong>Selecione os conteúdos</strong><label><input type="checkbox" class="item-relatorio" value="frota">Indicadores da frota</label><label><input type="checkbox" class="item-relatorio" value="veiculos">Relação de veículos</label><label><input type="checkbox" class="item-relatorio" value="licenciamento">Licenciamento</label><label><input type="checkbox" class="item-relatorio" value="contratos">Contratos</label><label><input type="checkbox" class="item-relatorio" value="multas">Multas</label><label><input type="checkbox" class="item-relatorio" value="manutencoes">Manutenções</label><label><input type="checkbox" class="item-relatorio" value="financeiro">Financeiro</label><label><input type="checkbox" class="item-relatorio" value="faturas">Faturas</label></div></section>
+<section class="painel-filtros no-print" aria-labelledby="tituloFiltros"><div class="filtro-titulo"><div class="etapa-titulo"><span class="etapa-numero">2</span><div><h2 id="tituloFiltros">Filtros da consulta</h2><p id="descricaoFiltros">Defina os critérios da consulta.</p></div></div><button type="button" id="limparConsulta" class="botao-texto">Limpar filtros</button></div>
+<div class="filtros-grid" id="filtrosGerais">
+<div class="campo" data-campo="dataInicial"><label for="dataInicial">Data inicial</label><input type="date" id="dataInicial" class="controle-moderno"></div>
+<div class="campo" data-campo="dataFinal"><label for="dataFinal">Data final</label><input type="date" id="dataFinal" class="controle-moderno"></div>
+<div class="campo" data-campo="filtroVeiculo"><label for="filtroVeiculo">Modelo do veículo</label><select id="filtroVeiculo" class="controle-moderno"><option value="">Todos os modelos</option></select></div>
+<div class="campo campo-clientes" data-campo="filtroCliente"><label for="seletorClientes">Clientes / locatários</label><select id="filtroCliente" multiple aria-hidden="true" tabindex="-1"><option value="">Todos os clientes</option></select><details class="seletor-clientes" id="seletorClientes"><summary><span id="resumoClientes">Todos os clientes</span><b>⌄</b></summary><div class="opcoes-clientes" id="opcoesClientes"></div></details></div>
+</div><div class="filtros-grid" id="filtrosLicenciamento" hidden>
+<div class="campo" data-campo="exercicioLicenciamento"><label for="exercicioLicenciamento">Exercício</label><select id="exercicioLicenciamento" class="controle-moderno"><option value="2026">2026</option></select></div>
+<div class="campo" data-campo="situacaoLicenciamento"><label for="situacaoLicenciamento">Situação do licenciamento</label><select id="situacaoLicenciamento" class="controle-moderno"><option value="">Todas as situações</option><option value="vencido">Vencidos</option><option value="a_vencer">Pendentes dentro do prazo</option><option value="licenciado">Licenciados</option><option value="sem_informacao">Sem informação</option><option value="fora_sp">Fora de SP</option></select></div>
+<div class="campo" data-campo="finalLicenciamento"><label for="finalLicenciamento">Final da placa</label><select id="finalLicenciamento" class="controle-moderno"><option value="">Todos os finais</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div>
+<div class="campo" data-campo="anoCrlvFiltro"><label for="anoCrlvFiltro">Último CRLV emitido</label><input id="anoCrlvFiltro" class="controle-moderno" type="number" min="1900" max="2200" placeholder="Todos os anos"></div>
+</div><div class="filtro-acoes"><p id="ajudaConsulta">Os campos em branco consideram todos os registros.</p><button type="button" class="btn-aplicar" id="gerarConsulta">Gerar relatório <span aria-hidden="true">→</span></button></div></section>
+<div id="mensagemConsulta" class="mensagem-consulta no-print" role="status" aria-live="polite">Carregando dados da locadora…</div>
+<div class="resultado-cabecalho no-print" id="tituloResultado" hidden><div class="etapa-titulo"><span class="etapa-numero">3</span><div><h2>Resultado da consulta</h2><p id="descricaoResultado"></p></div></div><span class="resultado-selo">Consulta gerada</span></div>
+<div class="relatorio-inicial no-print" id="estadoInicialRelatorios"><span class="estado-simbolo" aria-hidden="true">▤</span><h2>Seu relatório começa aqui</h2><p>Escolha uma categoria, ajuste os filtros e clique em <strong>Gerar relatório</strong>.</p><small>Você poderá imprimir o resultado ou salvar em PDF.</small></div>
+        <div class="identificacao-relatorio">
+
+            <div>
+
+                <strong>
+                    CENTRAL LOCADORA
+                </strong>
+
+                <span>
+                    Relatório Gerencial
+                </span>
+
+            </div>
+
+
+            <div class="identificacao-direita">
+
+                <span>
+                    Período:
+                </span>
+
+                <strong id="periodoRelatorio">
+                    Todos os períodos
+                </strong>
+
+                <span>
+                    Gerado em:
+                </span>
+
+                <strong id="dataGeracao">
+                    -
+                </strong>
+
+                <small id="emitenteRelatorio"></small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             RESUMO PRINCIPAL
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral frota">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        🚗 Resumo da Frota
+                    </h2>
+
+                    <p>
+                        Situação atual dos veículos cadastrados.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards-resumo">
+
+                <div class="card-indicador">
+
+                    <span>
+                        Total de veículos
+                    </span>
+
+                    <strong id="totalVeiculos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador verde">
+
+                    <span>
+                        Disponíveis
+                    </span>
+
+                    <strong id="veiculosDisponiveis">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador azul">
+
+                    <span>
+                        Alugados
+                    </span>
+
+                    <strong id="veiculosAlugados">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador laranja">
+
+                    <span>
+                        Em manutenção
+                    </span>
+
+                    <strong id="veiculosManutencao">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador cinza">
+
+                    <span>
+                        Inativos
+                    </span>
+
+                    <strong id="veiculosInativos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="secao-relatorio secao-veiculos-detalhada"
+            data-relatorio="geral frota">
+
+            <div class="secao-titulo">
+                <div>
+                    <h2>Relação de veículos</h2>
+                    <p>Dados cadastrais, localização e vínculo atual de cada veículo da frota.</p>
+                </div>
+            </div>
+
+            <div class="tabela-wrapper">
+                <div id="estadoRelatorioVeiculos" class="estado-relatorio-veiculos" role="status" aria-live="polite"></div>
+                <table class="tabela-veiculos-relatorio">
+                    <thead>
+                        <tr><th>#</th><th>Placa</th><th>RENAVAM</th><th>Chassi</th><th>Modelo</th><th>Ano fab.</th><th>Mês locação</th><th>Data inicial</th><th>Data final</th><th>Dias</th><th>Valor mensal</th><th>Cliente</th><th>Localização</th><th>Status</th></tr>
+                    </thead>
+                    <tbody id="tabelaVeiculosRelatorio"></tbody>
+                </table>
+                <div class="paginacao-relatorio no-print" id="paginacaoRelatorioVeiculos">
+                    <button type="button" id="paginaVeiculosAnterior">Anterior</button>
+                    <span id="paginaVeiculosResumo">Página 1</span>
+                    <button type="button" id="paginaVeiculosProxima">Próxima</button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- ==========================================
+             CLIENTES E CONTRATOS
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral contratos">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        📄 Clientes e Contratos
+                    </h2>
+
+                    <p>
+                        Indicadores comerciais da locadora.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards-resumo">
+
+                <div class="card-indicador">
+
+                    <span>
+                        Clientes cadastrados
+                    </span>
+
+                    <strong id="totalClientes">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador">
+
+                    <span>
+                        Total de contratos
+                    </span>
+
+                    <strong id="totalContratos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador verde">
+
+                    <span>
+                        Contratos ativos
+                    </span>
+
+                    <strong id="contratosAtivos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador azul">
+
+                    <span>
+                        Finalizados
+                    </span>
+
+                    <strong id="contratosFinalizados">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador vermelho">
+
+                    <span>
+                        Cancelados
+                    </span>
+
+                    <strong id="contratosCancelados">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FINANCEIRO
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral financeiro">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        💰 Resumo Financeiro
+                    </h2>
+
+                    <p>
+                        Consolidação dos valores registrados no sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards-financeiro">
+
+                <div class="financeiro-card receita">
+
+                    <span>
+                        Receita dos contratos
+                    </span>
+
+                    <strong id="receitaContratos">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <div class="financeiro-card despesa">
+
+                    <span>
+                        Custos de manutenção
+                    </span>
+
+                    <strong id="custoManutencao">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <div class="financeiro-card despesa">
+
+                    <span>
+                        Valor das multas
+                    </span>
+
+                    <strong id="valorMultas">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+
+                <div class="financeiro-card resultado">
+
+                    <span>
+                        Resultado estimado
+                    </span>
+
+                    <strong id="resultadoEstimado">
+                        R$ 0,00
+                    </strong>
+
+                    <small>
+                        Receita de contratos menos manutenção e multas
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MULTAS
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral multas">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        ⚠️ Multas
+                    </h2>
+
+                    <p>
+                        Indicadores das infrações cadastradas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards-resumo">
+
+                <div class="card-indicador">
+
+                    <span>
+                        Total de multas
+                    </span>
+
+                    <strong id="totalMultas">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador laranja">
+
+                    <span>
+                        Pendentes
+                    </span>
+
+                    <strong id="multasPendentes">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador verde">
+
+                    <span>
+                        Pagas
+                    </span>
+
+                    <strong id="multasPagas">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador azul">
+
+                    <span>
+                        Em recurso
+                    </span>
+
+                    <strong id="multasRecurso">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador vermelho">
+
+                    <span>
+                        Canceladas
+                    </span>
+
+                    <strong id="multasCanceladas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MANUTENÇÃO
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral manutencoes">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        🔧 Manutenções
+                    </h2>
+
+                    <p>
+                        Acompanhamento dos serviços realizados na frota.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cards-resumo">
+
+                <div class="card-indicador">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="totalManutencoes">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador azul">
+
+                    <span>
+                        Agendadas
+                    </span>
+
+                    <strong id="manutencoesAgendadas">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador laranja">
+
+                    <span>
+                        Em andamento
+                    </span>
+
+                    <strong id="manutencoesAndamento">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador verde">
+
+                    <span>
+                        Concluídas
+                    </span>
+
+                    <strong id="manutencoesConcluidas">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="card-indicador vermelho">
+
+                    <span>
+                        Canceladas
+                    </span>
+
+                    <strong id="manutencoesCanceladas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             DISTRIBUIÇÃO DA FROTA
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral frota">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        📊 Distribuição da Frota
+                    </h2>
+
+                    <p>
+                        Representação visual da situação dos veículos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="grafico-container">
+
+                <div
+                    class="barra-item"
+                    id="barraDisponiveis">
+
+                    <div class="barra-info">
+
+                        <span>
+                            Disponíveis
+                        </span>
+
+                        <strong id="percentualDisponiveis">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="barra-fundo">
+
+                        <div
+                            class="barra-preenchimento verde"
+                            id="graficoDisponiveis">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+
+                        <span>
+                            Alugados
+                        </span>
+
+                        <strong id="percentualAlugados">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="barra-fundo">
+
+                        <div
+                            class="barra-preenchimento azul"
+                            id="graficoAlugados">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+
+                        <span>
+                            Em manutenção
+                        </span>
+
+                        <strong id="percentualManutencao">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="barra-fundo">
+
+                        <div
+                            class="barra-preenchimento laranja"
+                            id="graficoManutencao">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+
+                        <span>
+                            Inativos
+                        </span>
+
+                        <strong id="percentualInativos">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="barra-fundo">
+
+                        <div
+                            class="barra-preenchimento cinza"
+                            id="graficoInativos">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TABELA DE CONTRATOS
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral contratos financeiro">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        📑 Demonstrativo de Contratos
+                    </h2>
+
+                    <p>
+                        Relação dos contratos considerados no relatório.
+                    </p>
+
+                </div>
+
+                <span id="contadorContratosRelatorio">
+                    0 registro(s)
+                </span>
+
+            </div>
+
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Contrato
+                            </th>
+
+                            <th>
+                                Cliente
+                            </th>
+
+                            <th>
+                                Veículo
+                            </th>
+
+                            <th>
+                                Início
+                            </th>
+
+                            <th>
+                                Término
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Valor
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaContratosRelatorio">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="mensagem-vazia"
+                id="semContratos">
+
+                Nenhum contrato encontrado no período informado.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TABELA DE MULTAS
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral multas financeiro">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        ⚠️ Demonstrativo de Multas
+                    </h2>
+
+                    <p>
+                        Relação das infrações consideradas no relatório.
+                    </p>
+
+                </div>
+
+                <span id="contadorMultasRelatorio">
+                    0 registro(s)
+                </span>
+
+            </div>
+
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Auto de Infração
+                            </th>
+
+                            <th>
+                                Placa
+                            </th>
+
+                            <th>
+                                Cliente
+                            </th>
+
+                            <th>
+                                Data
+                            </th>
+
+                            <th>
+                                Situação
+                            </th>
+
+                            <th>
+                                Valor
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaMultasRelatorio">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="mensagem-vazia"
+                id="semMultas">
+
+                Nenhuma multa encontrada no período informado.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TABELA DE MANUTENÇÕES
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral manutencoes financeiro">
+
+
+            <div class="secao-titulo">
+
+                <div>
+
+                    <h2>
+                        🔧 Demonstrativo de Manutenções
+                    </h2>
+
+                    <p>
+                        Relação das manutenções consideradas no relatório.
+                    </p>
+
+                </div>
+
+                <span id="contadorManutencoesRelatorio">
+                    0 registro(s)
+                </span>
+
+            </div>
+
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Veículo
+                            </th>
+
+                            <th>
+                                Tipo
+                            </th>
+
+                            <th>
+                                Oficina
+                            </th>
+
+                            <th>
+                                Entrada
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Valor
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaManutencoesRelatorio">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="mensagem-vazia"
+                id="semManutencoes">
+
+                Nenhuma manutenção encontrada no período informado.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TABELA DE FATURAS
+        =========================================== -->
+
+        <section
+            class="secao-relatorio"
+            data-relatorio="geral faturas financeiro">
+
+            <div class="secao-titulo">
+
+                <div>
+                    <h2>
+                        💰 Demonstrativo de Faturas
+                    </h2>
+
+                    <p>
+                        Relação das faturas emitidas no módulo financeiro.
+                    </p>
+
+                </div>
+
+                <span id="contadorFaturasRelatorio">
+                    0 registro(s)
+                </span>
+
+            </div>
+
+            <div class="tabela-wrapper">
+
+                <table class="tabela-faturas-relatorio">
+
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Cliente</th>
+                            <th>Contrato</th>
+                            <th>Descrição</th>
+                            <th>Vencimento</th>
+                            <th>Pagamento</th>
+                            <th>Status</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelaFaturasRelatorio">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div
+                class="mensagem-vazia"
+                id="semFaturas">
+
+                Nenhuma fatura encontrada.
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================================
+             OBSERVAÇÃO
+        =========================================== -->
+
+        <section class="secao-relatorio" data-relatorio="licenciamento" id="relatorioLicenciamento">
+<div class="secao-titulo"><div><h2>Relatório de licenciamento — Detran-SP</h2><p id="resumoLicenciamento"></p></div></div>
+<div class="licenciamento-orientacao"><span aria-hidden="true">ⓘ</span><p>Situação calculada pelo CRLV cadastrado. Para atualizar, acesse <a href="LOCADORA_VEICULOS.HTML">Veículos</a>. Não representa uma consulta de débitos ao Detran.</p></div><details class="calendario-detalhes no-print"><summary>Consultar calendário e critérios do Detran-SP · 2026</summary><div class="calendario-conteudo"><p><strong>Veículos em geral:</strong> 1/2 julho · 3/4 agosto · 5/6 setembro · 7/8 outubro · 9 novembro · 0 dezembro.</p><p><strong>Caminhões:</strong> 1/2 setembro · 3/4/5 outubro · 6/7/8 novembro · 9/0 dezembro.</p><p>Prazo até o último dia do mês. Exercícios anteriores pendentes também são considerados. <a href="https://servicos.sp.gov.br/fcarta/1DD2C9F8-815F-49D4-9D47-F09885256ECE" target="_blank" rel="noopener">Fonte: Detran-SP</a> · Verificado em 17/09/2026.</p></div></details><div class="tabela-wrapper"><table><thead><tr><th>Placa</th><th>Final</th><th>Veículo</th><th>UF</th><th>Calendário</th><th>Último CRLV</th><th>Prazo do exercício 2026</th><th>Situação</th></tr></thead><tbody id="tabelaLicenciamento"></tbody></table></div></section>
+<div class="rodape-relatorio">
+
+            <p>
+                Relatório elaborado automaticamente a partir dos
+                registros disponíveis no sistema Central Locadora.
+            </p>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<footer class="footer-sistema">
+
+    CENTRAL LOCADORA
+
+    <br>
+
+    Sistema de Gestão de Veículos
+
+</footer>
+
+
+
+
+<script type="text/plain" data-banco-src="LICENCIAMENTO_SP.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_RELATORIOS.JS"></script>
+<script type="text/plain" data-banco-src="RELATORIOS_INTERFACE.JS"></script>
+
+
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+
+</html>

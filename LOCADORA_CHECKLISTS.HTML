@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Locadora — Check-lists</title>
+  <link rel="stylesheet" href="LOCADORA_CHECKLISTS.CSS">
+  <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+  <link rel="stylesheet" href="LOCADORA_FORMULARIOS_ROBUSTOS.CSS">
+  <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+<body>
+  <header class="topo"><div class="topo-conteudo"><a class="marca" href="LOCADORA_SISTEMA.HTML">CENTRAL <span>LOCADORA</span></a><div class="topo-usuario">Vistorias e check-lists <a href="LOCADORA_SISTEMA.HTML">Voltar ao sistema</a></div></div></header>
+  <nav class="menu"><a href="LOCADORA_SISTEMA.HTML">Início</a><a href="LOCADORA_VEICULOS.HTML">Veículos</a><a href="LOCADORA_CLIENTES.HTML">Clientes</a><a href="LOCADORA_CONTRATOS.HTML">Contratos</a><a href="LOCADORA_MULTAS.HTML">Multas</a><a href="LOCADORA_MANUTENCAO.HTML">Manutenção</a><a href="LOCADORA_FINANCEIRO.HTML">Financeiro</a><a href="LOCADORA_RELATORIOS.HTML">Relatórios</a><a class="ativo" href="LOCADORA_CHECKLISTS.HTML">Check-lists</a></nav>
+  <main class="pagina">
+    <section class="hero"><div><p class="eyebrow">VISTORIA DIGITAL</p><h1>Check-list do veículo</h1><p>Registre a condição da frota com fotos, itens de conferência e assinatura operacional.</p></div><button class="botao primario" type="button" id="novoChecklist">+ Novo check-list</button></section>
+    <section class="grade-resumo" aria-label="Resumo de vistorias"><article><span>Vistorias registradas</span><strong id="totalChecklists">0</strong></article><article><span>Entradas</span><strong id="totalEntradas">0</strong></article><article><span>Saídas</span><strong id="totalSaidas">0</strong></article><article><span>Com pendências</span><strong id="totalPendencias">0</strong></article></section>
+    <section class="cartao formulario recolhido" id="areaFormulario">
+      <div class="cabecalho-cartao"><div><p class="eyebrow">NOVA VISTORIA</p><h2>Informações do check-list</h2></div><span class="etapa">Etapa 1 de 3</span></div>
+      <form id="formChecklist">
+        <div class="campos grade-3">
+          <label><span>Veículo <b>*</b></span><select id="veiculoChecklist" required><option value="">Selecione o veículo</option></select></label>
+          <label><span>Cliente que retira ou devolve</span><select id="clienteChecklist"><option value="">Sem cliente informado</option></select></label>
+          <label><span>Tipo de vistoria <b>*</b></span><select id="tipoChecklist" required><option value="Saída">Saída / entrega</option><option value="Entrada">Entrada / devolução</option><option value="Intermediária">Vistoria intermediária</option></select></label>
+          <label><span>Data e hora <b>*</b></span><input id="dataChecklist" type="datetime-local" required></label>
+          <label><span>Quilometragem</span><input id="kmChecklist" type="text" inputmode="numeric" placeholder="Ex.: 12.500" data-sec-input="h0"></label>
+          <label><span>Combustível</span><select id="combustivelChecklist"><option value="">Não informado</option><option>0/8 — Vazio</option><option>1/8</option><option>2/8</option><option>3/8</option><option>4/8 — Meio tanque</option><option>5/8</option><option>6/8</option><option>7/8</option><option>8/8 — Tanque cheio</option></select></label>
+          <label><span>Responsável pela vistoria</span><input id="responsavelChecklist" type="text" placeholder="Nome do responsável"></label>
+        </div>
+        <div class="divisor"><span>Itens de conferência</span><small>Marque a condição de cada item avaliado.</small></div>
+        <div class="tabela-itens"><div class="linha-cabecalho"><span>Item verificado</span><span>Condição</span><span>Observação</span></div><div id="itensChecklist"></div></div>
+        <div class="divisor"><span>Registro fotográfico</span><small>Use a câmera do celular ou selecione fotos. As imagens ficam vinculadas a esta vistoria.</small></div>
+        <div class="fotos-area"><div class="previsao-fotos" id="previsaoFotos"></div></div>
+        <label class="campo-observacoes"><span>Observações gerais</span><textarea id="observacoesChecklist" rows="4" placeholder="Descreva avarias, condições específicas ou informações relevantes..."></textarea></label>
+        <div class="acoes-formulario"><button class="botao secundario" id="limparChecklist" type="button">Limpar</button><button class="botao primario" type="submit">Salvar check-list</button></div>
+      </form>
+    </section>
+    <section class="cartao historico"><div class="cabecalho-cartao"><div><p class="eyebrow">HISTÓRICO</p><h2>Check-lists registrados</h2></div><div class="filtro-historico"><input id="buscarChecklist" type="search" placeholder="Buscar placa, veículo ou responsável"></div></div><div id="listaChecklists" class="lista-checklists"></div><p id="semChecklists" class="estado-vazio">Nenhum check-list registrado ainda.</p></section>
+  </main>
+  <dialog id="modalChecklist"><article><button class="fechar-modal" type="button" aria-label="Fechar">×</button><div id="conteudoModalChecklist"></div></article></dialog>
+  <script type="text/plain" data-banco-src="LOCADORA_CHECKLISTS.JS"></script>
+  <script type="text/plain" data-banco-src="LOCADORA_FORMULARIOS_ROBUSTOS.JS"></script>
+  <script type="text/plain" data-banco-src="LOCADORA_MASCARAS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script><script src="LOCADORA_ICONS.JS"></script>
+</body>
+</html>

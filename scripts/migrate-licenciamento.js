@@ -1,0 +1,2 @@
+const fs=require('node:fs'),pool=require('../src/config/database');
+(async()=>{try{const [cols]=await pool.query("SHOW COLUMNS FROM veiculos LIKE 'ano_licenciamento'");if(cols.length)throw Error('Migração já aplicada.');await pool.query(fs.readFileSync(require('node:path').join(__dirname,'../database/migrations/006_veiculos_licenciamento.sql'),'utf8'));console.log('Campos adicionados; registros existentes preservados.');}finally{await pool.end();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

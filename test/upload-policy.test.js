@@ -1,0 +1,6 @@
+const test=require("node:test"),assert=require("node:assert/strict"),p=require("../ARQUIVOS_SEGUROS.JS");
+const box=(type,body)=>{const b=Buffer.alloc(8+body.length);b.writeUInt32BE(b.length);b.write(type,4);Buffer.from(body).copy(b,8);return b;};
+const mp4=Buffer.concat([box("ftyp",Buffer.from("isom0000mp42")),box("moov",Buffer.alloc(16)),box("mdat",Buffer.from([1,2,3]))]);
+const webm=Buffer.from([0x1a,0x45,0xdf,0xa3,0x87,0x42,0x82,0x84,0x77,0x65,0x62,0x6d,0x18,0x53,0x80,0x67,0x8c,0x16,0x54,0xae,0x6b,0x81,0,0x1f,0x43,0xb6,0x75,0x81,0]);
+test("limita extensoes e tamanho",()=>{for(const ext of ["doc","docx","xls","xlsx","xml","exe","avi","mov"])assert.throws(()=>p.extension("anexo."+ext));assert.throws(()=>p.validateMeta({name:"video.mp4",type:"video/mp4",size:p.MAX+1}));});
+test("verifica estrutura de containers de video e rejeita renomeados",()=>{assert.equal(p.validateBytes(mp4,"mp4"),"video/mp4");assert.equal(p.validateBytes(webm,"webm"),"video/webm");for(const ext of ["mp4","webm"])assert.throws(()=>p.validateBytes(Buffer.from("MZ executavel renomeado"),ext));assert.throws(()=>p.validateBytes(Buffer.concat([mp4,Buffer.from("MZ payload")]),"mp4"));assert.throws(()=>p.validateBytes(webm.subarray(0,-1),"webm"));});

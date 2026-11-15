@@ -1,0 +1,2 @@
+const pool=require('../src/config/database'),fs=require('node:fs'),path=require('node:path');
+(async()=>{try{const [cols]=await pool.query("SHOW COLUMNS FROM faturas LIKE 'natureza'");if(!cols.length)await pool.query(fs.readFileSync(path.join(__dirname,'../database/migrations/007_faturas_natureza.sql'),'utf8'));console.log('Natureza das faturas dispon?vel; faturas existentes preservadas como Receita.');}finally{await pool.end();}})().catch(e=>{console.error(e.message);process.exitCode=1;});

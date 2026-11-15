@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Clientes</title>
+
+    <link rel="stylesheet"
+          href="LOCADORA_CLIENTES.CSS">
+
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="topo">
+
+        <div class="logo">
+
+            <span class="logo-principal">
+                LOCADORA
+            </span>
+
+            <span class="logo-destaque">
+                DIGITAL
+            </span>
+
+            <span class="descricao">
+                Gestão de Veículos
+            </span>
+
+        </div>
+
+
+        <div class="usuario-area">
+
+            Usuário:
+
+            <strong id="nomeUsuario">
+                Usuário
+            </strong>
+
+            <br>
+
+            <a data-sec-click="h3">
+                Sair do sistema
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         MENU PRINCIPAL
+    ============================== -->
+
+    <nav class="menu">
+
+        <a href="LOCADORA_SISTEMA.HTML">
+            Início
+        </a>
+
+        <a href="LOCADORA_VEICULOS.HTML">
+            Veículos
+        </a>
+
+        <a href="LOCADORA_CLIENTES.HTML"
+           class="ativo">
+            Clientes
+        </a>
+
+        <a href="LOCADORA_CONTRATOS.HTML">
+            Contratos
+        </a>
+
+        <a href="LOCADORA_MULTAS.HTML">
+            Multas
+        </a>
+
+        <a href="LOCADORA_MANUTENCAO.HTML">
+            Manutenção
+        </a>
+
+        <a href="LOCADORA_FINANCEIRO.HTML">
+            Financeiro
+        </a>
+
+        <a href="LOCADORA_RELATORIOS.HTML">
+            Relatórios
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="estrutura">
+
+
+    <!-- ==============================
+         MENU LATERAL
+    ============================== -->
+
+    <aside class="lateral">
+
+        <div class="lateral-titulo">
+            Serviços
+        </div>
+
+
+        <a class="opcao"
+           href="LOCADORA_VEICULOS.HTML">
+
+            🚗 Veículos
+
+        </a>
+
+
+        <a class="opcao ativo-lateral"
+           href="LOCADORA_CLIENTES.HTML">
+
+            👤 Clientes
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_CONTRATOS.HTML">
+
+            📄 Contratos
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MULTAS.HTML">
+
+            ⚠️ Multas
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MANUTENCAO.HTML">
+
+            🔧 Manutenção
+
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_FINANCEIRO.HTML">
+
+            💰 Financeiro
+
+        </a>
+
+
+        <a class="opcao">
+
+            📎 Documentos
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_RELATORIOS.HTML">
+
+            📊 Relatórios
+
+        </a>
+
+
+        <a class="opcao">
+
+            ⚙️ Configurações
+
+        </a>
+
+    </aside>
+
+
+
+    <!-- ==============================
+         CONTEÚDO
+    ============================== -->
+
+    <section class="conteudo">
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="cabecalho-pagina">
+
+            <div>
+
+                <h1>
+                    Gestão de Clientes
+                </h1>
+
+                <p>
+                    Cadastre, consulte e gerencie os clientes
+                    da locadora.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-novo"
+                data-sec-click="h4">
+
+                + Novo cliente
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==============================
+             PESQUISA
+        ============================== -->
+
+        <div class="pesquisa">
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar por nome, CPF/CNPJ, telefone, WhatsApp, CNH ou e-mail..."
+                data-sec-keyup="h5"
+            >
+
+
+            <button
+                type="button"
+                data-sec-click="h6">
+
+                🔍 Pesquisar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==============================
+             FORMULÁRIO
+        ============================== -->
+
+        <div
+            class="formulario"
+            id="formulario">
+
+
+            <!-- CABEÇALHO DO FORMULÁRIO -->
+
+            <div class="formulario-titulo">
+
+                <h2>
+                    Cadastro de cliente
+                </h2>
+
+
+                <button
+                    type="button"
+                    data-sec-click="h7">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 DADOS PESSOAIS
+            ============================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    Dados pessoais
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="campo">
+                        <label for="tipoPessoa">Tipo de cadastro *</label>
+                        <select id="tipoPessoa" data-sec-change="h8">
+                            <option value="PF">Pessoa física — CPF</option>
+                            <option value="PJ">Pessoa jurídica — CNPJ</option>
+                        </select>
+                    </div>
+
+
+                    <div class="campo" id="campoNomePessoa">
+
+                        <label for="nome">
+                            Nome completo *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o nome completo"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="documento" id="labelDocumento">
+                            CPF *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="documento"
+                            placeholder="Digite o CPF"
+                        >
+
+                    </div>
+
+                    <div class="campo campo-pessoa-juridica" hidden>
+                        <label for="razaoSocial">Razão social *</label>
+                        <input type="text" id="razaoSocial" placeholder="Razão social registrada">
+                    </div>
+
+                    <div class="campo campo-pessoa-juridica" hidden>
+                        <label for="nomeFantasia">Nome fantasia</label>
+                        <input type="text" id="nomeFantasia" placeholder="Nome comercial da empresa">
+                    </div>
+
+                    <div class="campo campo-pessoa-juridica" hidden>
+                        <label for="inscricaoEstadual">Inscrição estadual</label>
+                        <input type="text" id="inscricaoEstadual" placeholder="Número da inscrição estadual ou ISENTO">
+                    </div>
+
+                    <div class="campo campo-pessoa-juridica" hidden>
+                        <label for="responsavel">Responsável pela empresa</label>
+                        <input type="text" id="responsavel" placeholder="Nome do responsável pelo contrato">
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="rg">
+                            RG
+                        </label>
+
+                        <input
+                            type="text"
+                            id="rg"
+                            placeholder="Digite o RG"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="nascimento">
+                            Data de nascimento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="nascimento"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 CONTATO
+            ============================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    Contato
+                </h3>
+
+
+                <div class="form-grid">
+
+
+                    <div class="campo">
+
+                        <label for="telefone">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="text"
+                            id="telefone"
+                            placeholder="(00) 0000-0000"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="whatsapp">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            type="text"
+                            id="whatsapp"
+                            placeholder="(00) 00000-0000"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="cliente@example.com"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 ENDEREÇO
+            ============================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    Endereço
+                </h3>
+
+
+                <div class="form-grid">
+
+
+                    <div class="campo">
+
+                        <label for="cep">
+                            CEP
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cep"
+                            placeholder="00000-000"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="estado">
+                            Estado
+                        </label>
+
+                        <select id="estado">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="cidade">
+                            Cidade
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cidade"
+                            placeholder="Digite a cidade"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="bairro">
+                            Bairro
+                        </label>
+
+                        <input
+                            type="text"
+                            id="bairro"
+                            placeholder="Digite o bairro"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="endereco">
+                            Endereço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="endereco"
+                            placeholder="Rua, Avenida..."
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="numero">
+                            Número
+                        </label>
+
+                        <input
+                            type="text"
+                            id="numero"
+                            placeholder="Número"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="complemento">
+                            Complemento
+                        </label>
+
+                        <input
+                            type="text"
+                            id="complemento"
+                            placeholder="Apartamento, casa..."
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 CNH
+            ============================== -->
+
+            <div class="secao-formulario">
+
+                <h3>
+                    Carteira Nacional de Habilitação
+                </h3>
+
+
+                <div class="form-grid">
+
+
+                    <div class="campo">
+
+                        <label for="cnh">
+                            Número da CNH
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cnh"
+                            placeholder="Digite o número da CNH"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="categoria">
+                            Categoria
+                        </label>
+
+                        <select id="categoria">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="A">
+                                A
+                            </option>
+
+                            <option value="B">
+                                B
+                            </option>
+
+                            <option value="AB">
+                                AB
+                            </option>
+
+                            <option value="C">
+                                C
+                            </option>
+
+                            <option value="D">
+                                D
+                            </option>
+
+                            <option value="E">
+                                E
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="validadeCnh">
+                            Validade da CNH
+                        </label>
+
+                        <input
+                            type="date"
+                            id="validadeCnh"
+                        >
+
+                    </div>
+
+
+
+                    <div class="campo">
+
+                        <label for="situacao">
+                            Situação
+                        </label>
+
+                        <select id="situacao">
+
+                            <option value="Ativo">
+                                Ativo
+                            </option>
+
+                            <option value="Inativo">
+                                Inativo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 OBSERVAÇÕES
+            ============================== -->
+
+            <div class="campo campo-observacoes">
+
+                <label for="observacoes">
+                    Observações
+                </label>
+
+                <textarea
+                    id="observacoes"
+                    placeholder="Digite observações sobre o cliente..."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 AÇÕES
+            ============================== -->
+
+            <div class="form-acoes">
+
+                <button
+                    type="button"
+                    class="btn-cancelar"
+                    data-sec-click="h7">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn-salvar"
+                    data-sec-click="h9">
+
+                    Salvar cliente
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==============================
+             TABELA DE CLIENTES
+        ============================== -->
+
+        <div class="tabela-container">
+
+
+            <div class="tabela-topo">
+
+                <h2>
+                    Clientes cadastrados
+                </h2>
+
+
+                <span id="contador">
+                    0 clientes
+                </span>
+
+            </div>
+
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Nome
+                        </th>
+
+                        <th>
+                            CPF/CNPJ
+                        </th>
+
+                        <th>
+                            Telefone
+                        </th>
+
+                        <th>
+                            CNH
+                        </th>
+
+                        <th>
+                            Validade CNH
+                        </th>
+
+                        <th>
+                            Situação
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="tabelaClientes">
+
+                </tbody>
+
+            </table>
+
+
+
+            <div
+                id="mensagemVazia"
+                class="mensagem-vazia">
+
+                Nenhum cliente cadastrado.
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ==================================================
+     MODAL — FICHA COMPLETA DO CLIENTE
+================================================== -->
+
+<div
+    class="modal"
+    id="modalFicha">
+
+
+    <div class="modal-conteudo">
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2>
+                    Ficha do cliente
+                </h2>
+
+                <span id="fichaNome">
+                    Cliente
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-fechar"
+                data-sec-click="h10">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+
+        <!-- CONTEÚDO DA FICHA -->
+
+        <div class="ficha">
+
+
+            <!-- ==============================
+                 DADOS PRINCIPAIS
+            ============================== -->
+
+            <div class="ficha-titulo">
+                Dados principais
+            </div>
+
+
+            <div class="dados-grid">
+
+
+                <div>
+
+                    <span>
+                        Nome completo
+                    </span>
+
+                    <strong id="fichaNomeCompleto">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        CPF/CNPJ
+                    </span>
+
+                    <strong id="fichaDocumento">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        RG
+                    </span>
+
+                    <strong id="fichaRg">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Nascimento
+                    </span>
+
+                    <strong id="fichaNascimento">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Telefone
+                    </span>
+
+                    <strong id="fichaTelefone">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        WhatsApp
+                    </span>
+
+                    <strong id="fichaWhatsapp">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        E-mail
+                    </span>
+
+                    <strong id="fichaEmail">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Situação
+                    </span>
+
+                    <strong id="fichaSituacao">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 ENDEREÇO
+            ============================== -->
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    Endereço
+                </div>
+
+
+                <div class="dados-grid">
+
+
+                    <div>
+
+                        <span>
+                            CEP
+                        </span>
+
+                        <strong id="fichaCep">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Estado
+                        </span>
+
+                        <strong id="fichaEstado">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Cidade
+                        </span>
+
+                        <strong id="fichaCidade">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Bairro
+                        </span>
+
+                        <strong id="fichaBairro">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Endereço
+                        </span>
+
+                        <strong id="fichaEndereco">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Número
+                        </span>
+
+                        <strong id="fichaNumero">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Complemento
+                        </span>
+
+                        <strong id="fichaComplemento">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 CNH
+            ============================== -->
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    Carteira Nacional de Habilitação
+                </div>
+
+
+                <div class="status-grid">
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Número da CNH
+                        </span>
+
+                        <strong id="fichaCnh">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Categoria
+                        </span>
+
+                        <strong id="fichaCategoria">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Validade
+                        </span>
+
+                        <strong id="fichaValidadeCnh">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 OBSERVAÇÕES
+            ============================== -->
+
+            <div class="ficha-secao">
+
+                <div class="ficha-titulo">
+                    Observações
+                </div>
+
+
+                <div
+                    class="observacoes-ficha"
+                    id="fichaObservacoes">
+
+                    Nenhuma observação registrada.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RODAPÉ DO MODAL -->
+
+        <div class="modal-rodape">
+
+            <button
+                type="button"
+                class="btn-cancelar"
+                data-sec-click="h10">
+
+                Fechar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==============================
+     RODAPÉ
+============================== -->
+
+<footer>
+
+    CENTRAL LOCADORA
+
+    <br>
+
+    Sistema de Gestão de Veículos
+
+</footer>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT EXTERNO
+================================================== -->
+
+
+<script type="text/plain" data-banco-src="LOCADORA_CLIENTES.JS"></script>
+
+
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+
+</html>

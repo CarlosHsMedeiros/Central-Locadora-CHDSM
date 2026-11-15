@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora - Financeiro</title>
+    <link rel="stylesheet" href="LOCADORA_FINANCEIRO.CSS">
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+    <link rel="stylesheet" href="LOCADORA_FINANCEIRO_INTERFACE.CSS">
+<link rel="stylesheet" href="LOCADORA_NFSE.CSS">
+</head>
+<body class="financeiro-workspace">
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <span class="logo-principal">LOCADORA</span>
+                <span class="logo-destaque">DIGITAL</span>
+                <span class="descricao">Gestão Financeira</span>
+            </div>
+            <div class="usuario-area">
+                Usuário: <strong id="nomeUsuario">Usuário</strong><br>
+                <a href="#" data-sec-click="h43">Sair do sistema</a>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="LOCADORA_SISTEMA.HTML">Início</a>
+            <a href="LOCADORA_VEICULOS.HTML">Veículos</a>
+            <a href="LOCADORA_CLIENTES.HTML">Clientes</a>
+            <a href="LOCADORA_CONTRATOS.HTML">Contratos</a>
+            <a href="LOCADORA_MULTAS.HTML">Multas</a>
+            <a href="LOCADORA_MANUTENCAO.HTML">Manutenção</a>
+            <a href="LOCADORA_FINANCEIRO.HTML" class="ativo">Financeiro</a>
+            <a href="LOCADORA_RELATORIOS.HTML">Relatórios</a>
+        </nav>
+    </header>
+
+    <main class="estrutura">
+        <aside class="lateral">
+            <div class="lateral-titulo">Serviços</div>
+            <a class="opcao" href="LOCADORA_VEICULOS.HTML">🚗 Veículos</a>
+            <a class="opcao" href="LOCADORA_CLIENTES.HTML">👤 Clientes</a>
+            <a class="opcao" href="LOCADORA_CONTRATOS.HTML">📄 Contratos</a>
+            <a class="opcao" href="LOCADORA_MULTAS.HTML">⚠️ Multas</a>
+            <a class="opcao" href="LOCADORA_MANUTENCAO.HTML">🔧 Manutenção</a>
+            <a class="opcao ativo-lateral" href="LOCADORA_FINANCEIRO.HTML">💰 Financeiro</a>
+            <a class="opcao" href="LOCADORA_RELATORIOS.HTML">📊 Relatórios</a>
+        </aside>
+
+        <section class="conteudo">
+            <div class="cabecalho-pagina">
+                <div>
+                    <h1>Gestão Financeira</h1>
+                    <p>Acompanhe receitas, custos e o resultado estimado da locadora.</p>
+                </div>
+                <div class="acoes-cabecalho">
+                    <button type="button" class="btn-atualizar" data-sec-click="h44">↻ Atualizar dados</button>
+                    <button type="button" class="btn-atualizar" data-sec-click="h45">+ Nova fatura</button>
+                </div>
+            </div>
+
+            <div id="formularioFatura" class="formulario-fatura formulario">
+                <div class="formulario-titulo">
+                    <h2 id="tituloFormularioFatura">Nova fatura</h2>
+                    <button type="button" class="fechar-formulario-fatura" data-sec-click="h46" aria-label="Fechar formulário de fatura">Fechar ×</button>
+                </div>
+                <div class="form-grid">
+                    <div><label for="numeroFatura">Número da fatura *</label><input id="numeroFatura" type="text" readonly placeholder="Automático ao salvar"></div>
+                    <div><label for="naturezaFatura">Movimentação *</label><select id="naturezaFatura"><option value="Receita">Receita</option><option value="Despesa">Despesa</option></select></div><div><label for="tipoFatura">Tipo de fatura *</label><select id="tipoFatura" data-sec-change="h47"><option value="Locação">Fatura de locação</option><option value="Multa">Fatura de multa</option><option value="Manutenção">Fatura de manutenção</option><option value="Outro">Outra fatura</option></select></div>
+                    <div class="campo-completo"><label for="clienteFatura">Cliente *</label><select id="clienteFatura" data-sec-change="h48"><option value="">Selecione o cliente</option></select></div>
+                    <div class="campo-completo opcao-sem-contrato"><label><input type="checkbox" id="semContratoFatura"> Emitir fatura sem contrato</label><small>O cliente continua obrigatório. Você pode adicionar veículos manualmente.</small></div><div class="campo-completo"><label for="contratoFatura">Contrato vinculado <span id="obrigatoriedadeContrato">*</span></label><select id="contratoFatura"><option value="">Selecione o contrato</option></select></div>
+                    <div class="campo-completo"><label for="descricaoFatura">Descrição *</label><input id="descricaoFatura" type="text" placeholder="Ex.: Locação de veículo"></div>
+                    <div id="camposMultaFatura" class="campo-completo campos-multa-fatura" hidden><label for="aitFatura">AIT / Auto de Infração *</label><select id="aitFatura"><option value="">Selecione o AIT cadastrado em Multas</option></select><label class="opcao-reutilizacao"><input id="reutilizacaoAitCondutor" type="checkbox" data-sec-change="h49"> Cobrança por não identificação de condutor</label><div id="grupoJustificativaAit" hidden><label for="justificativaAit">Justificativa para reutilização do AIT *</label><input id="justificativaAit" type="text" placeholder="Informe o motivo da nova cobrança vinculada ao mesmo AIT"></div></div>
+                    <div class="campo-completo itens-veiculos-formulario"><div class="linha-titulo-itens"><div><label>Veículos faturados</label><p>Adicione os veículos e informe o valor de cada item.</p></div><button type="button" class="btn-adicionar-item" data-sec-click="h50">+ Adicionar veículo</button></div><div id="itensVeiculosFatura"></div></div>
+                    <div><label for="vencimentoFatura">Vencimento *</label><input id="vencimentoFatura" type="date"></div>
+                    <div><label for="valorBaseFatura">Valor adicional / outros itens</label><input id="valorBaseFatura" type="text" inputmode="decimal" placeholder="R$ 0,00" data-sec-input="h51"></div>
+                    <div><label for="valorFatura">Total da fatura *</label><input id="valorFatura" type="text" inputmode="decimal" readonly placeholder="R$ 0,00"></div>
+                    <div><label for="dataPagamentoFatura">Data de pagamento</label><input id="dataPagamentoFatura" type="date"></div>
+                </div>
+                <div class="form-acoes"><button type="button" class="btn-cancelar" data-sec-click="h46">Cancelar</button><button id="btnSalvarFatura" type="button" class="btn-atualizar" data-sec-click="h52">Salvar fatura</button></div>
+            </div>
+
+            <div class="tabela-container tabela-faturas">
+                <div class="tabela-topo"><div><h2>Faturas emitidas</h2><p>Consulte faturas por período, cliente, contrato e veículo.</p></div><span id="contadorFaturas">0 faturas</span></div>
+                <form id="filtrosFaturas" class="filtros-faturas" aria-label="Filtros de faturas">
+<div class="filtros-intro"><h3>Consultar faturas</h3><p>Combine período e dados para encontrar as faturas desejadas. As datas inicial e final são incluídas.</p></div>
+<fieldset class="filtro-grupo"><legend>Período</legend><div class="filtros-grade">
+<label>Período por<select name="dataCampo"><option value="todos">Todos</option><option value="vencimento">Vencimento</option><option value="dataPagamento">Pagamento</option></select></label>
+<label>De<input type="date" name="inicio"></label><label>Até<input type="date" name="fim"></label>
+</div></fieldset><fieldset class="filtro-grupo"><legend>Dados da fatura</legend><div class="filtros-grade"><label>Número, descrição ou AIT<input type="search" name="busca" placeholder="Buscar fatura"></label>
+<label>Cliente<input type="search" name="cliente" placeholder="Nome do cliente"></label>
+<label>Contrato<input type="search" name="contrato" placeholder="Número do contrato"></label>
+<label>Placa<input type="search" name="placa" placeholder="Ex.: ABC1D23" maxlength="8"></label>
+<label>Tipo<select name="tipo"><option value="">Todos</option><option>Locação</option><option>Multa</option><option>Manutenção</option><option value="Outro">Outros</option></select></label>
+<label>Situação<select name="situacao"><option value="">Todas</option><option>Paga</option><option>Pendente</option><option>Vencida</option></select></label>
+</div></fieldset><div class="filtros-acoes"><button type="submit">Aplicar filtros</button><button type="reset">Limpar filtros</button><span id="erroFiltrosFaturas" role="alert"></span></div>
+<div class="filtros-totais" id="resumoFiltrosFaturas" aria-live="polite"></div></form>
+<div class="tabela-scroll"><table><thead><tr><th>Fatura / cliente</th><th>Detalhes</th><th>Datas</th><th>Situação</th><th>Valor</th><th>Ações</th></tr></thead><tbody id="tabelaFaturas"></tbody></table></div>
+                <div id="mensagemFaturasVazia" class="mensagem-vazia">Nenhuma fatura cadastrada.</div>
+            </div>
+
+            <div class="resumo">
+                <article class="card-resumo receita"><span>Receitas faturadas</span><strong id="receitaContratos">R$ 0,00</strong></article>
+                <article class="card-resumo manutencao"><span>Custos de manutenção</span><strong id="custoManutencao">R$ 0,00</strong></article>
+                <article class="card-resumo multas"><span>Despesas pagas</span><strong id="valorMultas">R$ 0,00</strong></article>
+                <article class="card-resumo resultado"><span>Saldo das faturas</span><strong id="saldoEstimado">R$ 0,00</strong></article>
+            </div>
+
+            <div class="painel-info">
+                <strong>Como o saldo é calculado</strong>
+                Receita total de contratos menos manutenção e multas de responsabilidade da locadora. Multas do cliente, condutor ou empresa responsável não reduzem o saldo. Multas canceladas também são desconsideradas.
+            </div>
+
+            <div class="tabela-container">
+                <div class="tabela-topo">
+                    <div>
+                        <h2>Movimentações consideradas</h2>
+                        <p>Dados gerados automaticamente a partir dos módulos do sistema.</p>
+                    </div>
+                    <span id="contador">0 movimentações</span>
+                </div>
+                <div class="tabela-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>Tipo</th><th>Descrição</th><th>Data</th><th>Valor</th></tr>
+                        </thead>
+                        <tbody id="tabelaFinanceiro"></tbody>
+                    </table>
+                </div>
+                <div id="mensagemVazia" class="mensagem-vazia">Não há movimentações financeiras cadastradas.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>CENTRAL LOCADORA<br>Sistema de Gestão Financeira</footer>
+    
+    <script type="text/plain" data-banco-src="LOCADORA_FILTROS_FATURAS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_FINANCEIRO.JS"></script>
+    <script type="text/plain" data-banco-src="LOCADORA_FATURAMENTO.JS"></script><script type="text/plain" data-banco-src="LOCADORA_RENTABILIDADE.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_NFSE.JS"></script><script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+</html>

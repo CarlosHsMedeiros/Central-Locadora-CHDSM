@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="DOMPURIFY.js"></script>
+    <script src="ARQUIVOS_SEGUROS.JS"></script>
+    <script src="SEGURANCA_INTERFACE.JS"></script>
+    <script src="LOCADORA_VALORES.JS"></script>
+    <script src="LOCADORA_EVENTOS.JS"></script>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Locadora - Veículos</title>
+
+    <link rel="stylesheet"
+          href="LOCADORA_VEICULOS.CSS">
+
+    <link rel="stylesheet" href="LOCADORA_LISTAS.CSS">
+    <link rel="stylesheet" href="LOCADORA_IMPRESSAO.CSS">
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="topo">
+
+        <div class="logo">
+
+            <span class="logo-principal">
+                LOCADORA
+            </span>
+
+            <span class="logo-destaque">
+                DIGITAL
+            </span>
+
+            <span class="descricao">
+                Gestão de Veículos
+            </span>
+
+        </div>
+
+
+        <div class="usuario-area">
+
+            Usuário:
+
+            <strong id="nomeUsuario">
+                Usuário
+            </strong>
+
+            <br>
+
+            <a data-sec-click="h3">
+                Sair do sistema
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="LOCADORA_SISTEMA.HTML">
+            Início
+        </a>
+
+        <a href="LOCADORA_VEICULOS.HTML"
+           class="ativo">
+            Veículos
+        </a>
+
+        <a href="LOCADORA_CLIENTES.HTML">
+            Clientes
+        </a>
+
+        <a href="LOCADORA_CONTRATOS.HTML">
+            Contratos
+        </a>
+
+        <a href="LOCADORA_MULTAS.HTML">
+            Multas
+        </a>
+
+        <a href="LOCADORA_MANUTENCAO.HTML">
+            Manutenção
+        </a>
+
+        <a href="LOCADORA_FINANCEIRO.HTML">
+            Financeiro
+        </a>
+
+        <a href="LOCADORA_RELATORIOS.HTML">
+            Relatórios
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="estrutura">
+
+
+    <!-- ==============================
+         MENU LATERAL
+    =============================== -->
+
+    <aside class="lateral">
+
+        <div class="lateral-titulo">
+            Serviços
+        </div>
+
+
+        <a class="opcao ativo-lateral"
+           href="LOCADORA_VEICULOS.HTML">
+
+            🚗 Veículos
+
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_CLIENTES.HTML">
+            👤 Clientes
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_CONTRATOS.HTML">
+            📄 Contratos
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MULTAS.HTML">
+            ⚠️ Multas
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_MANUTENCAO.HTML">
+            🔧 Manutenção
+        </a>
+
+        <a class="opcao"
+           href="LOCADORA_FINANCEIRO.HTML">
+            💰 Financeiro
+        </a>
+
+
+        <a class="opcao">
+            📎 Documentos
+        </a>
+
+
+        <a class="opcao"
+           href="LOCADORA_RELATORIOS.HTML">
+            📊 Relatórios
+        </a>
+
+
+        <a class="opcao">
+            ⚙️ Configurações
+        </a>
+
+    </aside>
+
+
+
+    <!-- ==============================
+         CONTEÚDO
+    =============================== -->
+
+    <section class="conteudo">
+
+
+        <div class="cabecalho-pagina">
+
+            <div>
+
+                <h1>
+                    Gestão de Veículos
+                </h1>
+
+                <p>
+                    Cadastre, consulte e gerencie os veículos
+                    da frota.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn-novo"
+                data-sec-click="h4">
+
+                + Novo veículo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==============================
+             PESQUISA
+        =============================== -->
+
+        <div class="pesquisa">
+
+            <input
+                type="text"
+                id="campoPesquisa"
+                placeholder="Pesquisar por placa, marca ou modelo..."
+                data-sec-keyup="h76"
+            >
+
+
+            <button
+                data-sec-click="h77">
+
+                🔍 Pesquisar
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==============================
+             FORMULÁRIO
+        =============================== -->
+
+        <div
+            class="formulario"
+            id="formulario">
+
+
+            <div class="formulario-titulo">
+
+                <h2>
+                    Cadastro de veículo
+                </h2>
+
+
+                <button
+                    data-sec-click="h7">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+
+            <div class="form-grid">
+
+
+                <div class="campo">
+
+                    <label>
+                        Placa *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="placa"
+                        placeholder="ABC1D23"
+                        maxlength="8"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        RENAVAM
+                    </label>
+
+                    <input
+                        type="text"
+                        id="renavam"
+                        placeholder="Digite o RENAVAM"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Marca *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="marca"
+                        placeholder="Ex.: Volkswagen"
+                    >
+
+                </div>
+
+                <div class="campo">
+
+                    <label>
+                        Chassi
+                    </label>
+
+                    <input
+                        type="text"
+                        id="chassi"
+                        placeholder="Digite o número do chassi"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Modelo *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="modelo"
+                        placeholder="Ex.: Gol"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Ano
+                    </label>
+
+                    <input
+                        type="number"
+                        id="ano"
+                        placeholder="2026"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Cor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cor"
+                        placeholder="Ex.: Branco"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Quilometragem
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quilometragem"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+
+                <div class="campo">
+
+                    <label>
+                        Situação
+                    </label>
+
+                    <select id="situacao">
+
+                        <option value="Disponível">
+                            Disponível
+                        </option>
+
+                        <option value="Alugado">
+                            Alugado
+                        </option>
+
+                        <option value="Manutenção">
+                            Em manutenção
+                        </option>
+
+                        <option value="Inativo">
+                            Inativo
+                        </option>
+
+                        <option value="No Estacionamento A">No Estacionamento A</option>
+
+                        <option value="No Estacionamento B">No Estacionamento B</option>
+
+                        <option value="No Estacionamento C">No Estacionamento C</option>
+
+                        <option value="Na Oficina">Na Oficina</option>
+
+                    </select>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>
+                        Localização atual
+                    </label>
+
+                    <input
+                        type="text"
+                        id="localizacao"
+                        placeholder="Ex.: Pátio Central, filial ou endereço"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-acoes">
+
+                <button
+                    class="btn-cancelar"
+                    data-sec-click="h7">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    class="btn-salvar"
+                    data-sec-click="h78">
+
+                    Salvar veículo
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==============================
+             TABELA
+        =============================== -->
+
+        <div class="tabela-container">
+
+
+            <div class="tabela-topo">
+
+                <h2>
+                    Veículos cadastrados
+                </h2>
+
+
+                <span id="contador">
+                    0 veículos
+                </span>
+
+            </div>
+
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Placa
+                        </th>
+
+                        <th>
+                            Marca
+                        </th>
+
+                        <th>
+                            Modelo
+                        </th>
+
+                        <th>
+                            Ano
+                        </th>
+
+                        <th>
+                            Quilometragem
+                        </th>
+
+                        <th>
+                            Situação
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody id="tabelaVeiculos">
+
+                </tbody>
+
+            </table>
+
+
+
+            <div
+                id="mensagemVazia"
+                class="mensagem-vazia">
+
+                Nenhum veículo cadastrado.
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    CENTRAL LOCADORA
+
+    <br>
+
+    Sistema de Gestão de Veículos
+
+</footer>
+
+
+
+<!-- ==========================================
+     MODAL - FICHA DO VEÍCULO
+========================================== -->
+
+<div
+    class="modal"
+    id="modalFicha">
+
+
+    <div class="modal-conteudo">
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="modal-cabecalho">
+
+            <div>
+
+                <h2>
+                    Ficha do veículo
+                </h2>
+
+                <span id="fichaSubtitulo">
+                    Veículo
+                </span>
+
+            </div>
+
+
+            <button
+                class="modal-fechar"
+                data-sec-click="h10">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FICHA -->
+
+        <div class="ficha">
+
+
+            <!-- FOTO -->
+
+            <div class="foto-area">
+
+
+                <div
+                    class="foto-veiculo"
+                    id="fotoVeiculo">
+
+                    🚗
+
+                </div>
+
+
+                <p>
+                    Foto do veículo
+                </p>
+
+
+                <input
+                    type="file"
+                    id="inputFoto"
+                    accept=".jpg,.jpeg,.png"
+                    style="display: none;"
+                    data-sec-change="h79"
+                >
+
+
+                <div class="botoes-foto">
+
+                    <button
+                        class="btn-foto"
+                        data-sec-click="h80">
+
+                        📷 Adicionar foto
+
+                    </button>
+
+
+                    <button
+                        class="btn-foto btn-remover-foto"
+                        id="btnRemoverFoto"
+                        data-sec-click="h81"
+                        style="display: none;">
+
+                        🗑️ Remover foto
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="dados-principais">
+
+
+                <div class="ficha-titulo">
+
+                    🚗 Informações do veículo
+
+                </div>
+
+
+                <div class="dados-grid">
+
+
+                    <div>
+
+                        <span>
+                            Placa
+                        </span>
+
+                        <strong id="fichaPlaca">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            RENAVAM
+                        </span>
+
+                        <strong id="fichaRenavam">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Marca
+                        </span>
+
+                        <strong id="fichaMarca">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Modelo
+                        </span>
+
+                        <strong id="fichaModelo">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Ano
+                        </span>
+
+                        <strong id="fichaAno">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Cor
+                        </span>
+
+                        <strong id="fichaCor">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Quilometragem
+                        </span>
+
+                        <strong id="fichaQuilometragem">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Situação
+                        </span>
+
+                        <strong id="fichaSituacao">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DOCUMENTAÇÃO -->
+
+            <div class="ficha-secao">
+
+
+                <div class="ficha-titulo">
+
+                    📄 Documentação
+
+                </div>
+
+
+                <div class="status-grid">
+
+
+                    <div class="status-item">
+
+                        <span>
+                            IPVA
+                        </span>
+
+                        <strong>
+                            Em dia
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Licenciamento
+                        </span>
+
+                        <strong id="fichaLicenciamento">
+                            Em dia
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Seguro
+                        </span>
+
+                        <strong>
+                            Ativo
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MANUTENÇÃO -->
+
+            <div class="ficha-secao">
+
+
+                <div class="ficha-titulo">
+
+                    🔧 Manutenção
+
+                </div>
+
+
+                <div class="status-grid">
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Última manutenção
+                        </span>
+
+                        <strong>
+                            Não informado
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Próxima manutenção
+                        </span>
+
+                        <strong>
+                            Não informado
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+                            Quilometragem da manutenção
+                        </span>
+
+                        <strong>
+                            Não informado
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OBSERVAÇÕES -->
+
+            <div class="ficha-secao">
+
+
+                <div class="ficha-titulo">
+
+                    📝 Observações
+
+                </div>
+
+
+                <div
+                    class="observacoes-ficha"
+                    id="fichaObservacoes">
+
+                    Nenhuma observação registrada.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RODAPÉ -->
+
+        <div class="modal-rodape">
+
+
+            <button
+                class="btn-cancelar"
+                data-sec-click="h10">
+
+                Fechar
+
+            </button>
+
+
+            <button
+                class="btn-salvar"
+                data-sec-click="h33">
+
+                ✏️ Editar veículo
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script type="text/plain" data-banco-src="LOCADORA_INLINE_LOCADORA_VEICULOS_1.JS"></script>
+
+
+
+<script type="text/plain" data-banco-src="LICENCIAMENTO_SP.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_VEICULOS_API.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_FATURAMENTO.JS"></script><script type="text/plain" data-banco-src="LOCADORA_RENTABILIDADE.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_NAVEGACAO.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_ICONS.JS"></script>
+<script type="text/plain" data-banco-src="LOCADORA_IMPRESSAO.JS"></script>
+<script src="api.js"></script><script src="LOCADORA_BANCO.JS"></script></body>
+
+</html>

@@ -1,0 +1,48 @@
+#revisaoContrato{width:min(1120px,96vw);max-height:94vh;margin:auto;padding:0;border:1px solid #aac1ce;border-radius:8px;color:#18323e;font:15px Arial}#revisaoContrato::backdrop{background:#0008}.doc-cabecalho,.doc-rodape{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:16px 20px;background:#edf7fb}.doc-cabecalho{position:sticky;top:0;z-index:2}.doc-rodape{position:sticky;bottom:0;flex-wrap:wrap}.doc-corpo{padding:20px}.doc-corpo section,.doc-corpo details{margin-bottom:20px;padding:14px;border:1px solid #d4e2e9}.doc-corpo p{line-height:1.5;margin:8px 0}.doc-checkitem{display:block;padding:8px 0}.doc-checkitem input{width:auto;min-height:0}.doc-campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}.doc-campos label{min-width:0}.doc-campos input,.doc-campos textarea,#docModelo{display:block;width:100%;padding:9px;box-sizing:border-box}.doc-acoes-modelo{display:flex;align-items:end;gap:12px;margin:16px 0}#docTexto{display:block;width:100%;min-height:420px;padding:16px;box-sizing:border-box;line-height:1.65;resize:vertical;font:15px/1.65 Arial;white-space:pre-wrap}#revisaoContrato button,.doc-nao-imprimir{padding:11px 16px;border:1px solid #008fd0;border-radius:4px;background:#008fd0;color:white;cursor:pointer}#docEstado{font-weight:bold;color:#00558b}#docPrevia{padding:22px;border:1px solid #cddde5;background:white;margin-top:20px}.doc-texto-impresso{white-space:pre-wrap;overflow-wrap:anywhere;font:12pt/1.55 Arial}.doc-anexo{margin-top:30px;break-before:page}.doc-anexo h3{margin-top:22px}.doc-impressao{max-width:185mm;margin:18px auto;color:#111}@media(max-width:650px){.doc-campos{grid-template-columns:1fr}.doc-acoes-modelo{align-items:stretch;flex-direction:column}.doc-cabecalho h2{font-size:18px}.doc-corpo{padding:12px}}@media print{@page{size:A4;margin:15mm}.doc-nao-imprimir{display:none}.doc-impressao{max-width:none;margin:0}.doc-texto-impresso{font-size:11pt}.doc-anexo h2,.doc-anexo h3{break-after:avoid}body{margin:0}}
+
+.doc-fotos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}.doc-fotos figure{margin:0;break-inside:avoid}.doc-fotos img{width:100%;max-height:240px;object-fit:contain}.doc-fotos figcaption{font:10pt Arial;margin-top:5px}
+/* Identidade visual do padrao global, presente tambem na previa. */
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-global {
+        display: flex !important;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8mm;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 6mm !important;
+        padding: 0 0 4mm !important;
+        border-bottom: 1mm solid #008fd0;
+        background: #fff !important;
+        color: #20313b !important;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-marca { display: flex !important; align-items: center; gap: 4mm; min-width: 0; }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-logo { display: block !important; width: auto !important; max-width: 38mm !important; max-height: 16mm !important; object-fit: contain; }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-global h1 { margin: 0 !important; color: #00558b !important; font-size: 18pt !important; line-height: 1.1 !important; text-transform: uppercase; }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-global p { margin: 1.5mm 0 0 !important; color: #5d707a !important; font-size: 8.5pt !important; line-height: 1.3 !important; }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-meta { flex: 0 0 auto; max-width: 65mm; text-align: right; font-size: 8pt; line-height: 1.45; color: #5d707a; }
+    :is(#docPrevia,.doc-impressao) .cabecalho-impressao-meta strong { display: block; color: #00558b; font-size: 10pt; text-transform: uppercase; }
+
+    :is(#docPrevia,.doc-impressao) .rodape-impressao-global {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 8mm 0 0 !important;
+        padding: 3mm 0 0 !important;
+        border-top: 0.3mm solid #c9dce7;
+        background: #fff !important;
+        color: #5d707a !important;
+        font-size: 7.5pt !important;
+        line-height: 1.4 !important;
+        text-align: right;
+        page-break-inside: avoid;
+        break-inside: avoid-page;
+    }
+
+    :is(#docPrevia,.doc-impressao) .rodape-impressao-global strong {
+        color: #315668 !important;
+        font-weight: 600;
+    }
+
+:is(#docPrevia,.doc-impressao){font-family:"Segoe UI","Trebuchet MS",Arial,sans-serif;color:#20313b;box-sizing:border-box} :is(#docPrevia,.doc-impressao) .doc-texto-impresso{font-family:inherit;font-size:10pt;line-height:1.5} :is(#docPrevia,.doc-impressao) .doc-anexo h2,:is(#docPrevia,.doc-impressao) .doc-anexo h3{color:#00558b;font-family:inherit;break-after:avoid} .doc-impressao{max-width:186mm} @media print{@page{size:A4;margin:12mm}} @media(max-width:650px){#docPrevia .cabecalho-impressao-global{flex-wrap:wrap}#docPrevia .cabecalho-impressao-meta{text-align:left}}
